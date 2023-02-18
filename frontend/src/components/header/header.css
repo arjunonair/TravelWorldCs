@@ -1,0 +1,46 @@
+
+
+.header{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+}
+
+.logo img{
+    width: 40%;
+}
+
+.menu
+{
+    margin-bottom: 0;
+}
+
+.nav__item a{
+    text-decoration: none;
+    color: var(--heading-color);
+    font-weight:500;
+    font-size: 1.1;
+}
+
+.nav__item a:hover{
+    color: inherit;
+}
+
+.nav__item a.active__link{
+    color: var(--secondary-color);
+}
+.Mobile_menu{
+    font-size: 1.3rem;
+    color: var(--heading-color);
+    display: none;
+}
+.sticky__header{
+        width: 100%;
+        height : 80px;
+        line-height: 80px;
+        background: #fddd;
+        position:sticky;
+        top: 0;
+        box-shadow:3px 3px 8px -3px #fddd;
+        z-index: 999; 
+}

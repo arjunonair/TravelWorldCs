@@ -1,8 +1,8 @@
 import React from 'react'
-import {Container, Row, Button} from 'reactstrap'
+import {Container, Row, Button} from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom'
-import logo from '../../assets/images/logo2.png'
-
+import logo from '../../assets/images/logo.png'
+import './header.css'
 const nav__links=[
   {
     path:'/home',
@@ -10,7 +10,7 @@ const nav__links=[
   },
 
   {
-    path:'#',
+    path:'/about',
     display:'About'
   },
 
@@ -18,7 +18,6 @@ const nav__links=[
     path:'/tours',
     display:'Tours'
   }
-
 ]
 const Header = () => {
   return <header classname="header">
@@ -26,16 +25,46 @@ const Header = () => {
       <Row>
         <div className="nav_wrapper d-flex align-items-center
         justify-content-between">
-          
           <div className="logo">
-            <img className='photo' src={logo} width={650} height={200} alt="" />
+            <img className='photo' src={logo} alt="" />
           </div>
-          
+          <div className='navigation'>
+            <ul className="menu d-flex align-items-center gap-5 ">
+              {nav__links.map((item,index)=>(
+                <li className="nav__item" key={index}>
+                  <NavLink to ={item.path} className={navClass=>
+                    navClass.isActive ? 'active__link':""
+                    }
+                    >
+                    {item.display}
+                    </NavLink>
+                </li>
+                ))}
+            </ul>
+          </div>
+          {/*====nav=====*/}
+
+          <div className="nav__right d-flex align-items-center gap-4 ">
+              <div className="nav__btns d-flex align-items-center gap-4 ">
+                <Button color="secondary"outline className="btn secondary__btn">
+                  <Link to='/login' >
+                  Login
+                  </Link>
+                </Button>
+                <Button className="btn primary__btn">
+                  <Link to='/register'>
+                  Register
+                  </Link>
+                </Button>
+              </div>
+              <span class='Mobile_menu'>
+              <i class="ri-menu-line"></i>
+              </span>
+          </div>
         </div>
       </Row>
     </Container>
   </header>
-  
 }
 
 export default Header
