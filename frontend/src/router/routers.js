@@ -17,7 +17,7 @@ const Routers = () =>{
         <Route path='/login' element={<Login />} />
         <Route path='/tours/search' element={<SearchResult />} /> 
         <Route path='/register' element={<Register />} />
-    </Routes> 
+    </Routes>
   );
 };
 
