@@ -9,7 +9,7 @@
     font-weight: 600;
     margin-top: 1rem;
     margin-bottom: 2rem;
-    color: var(--heading-color);
+    color: var(--primary-color);
 }
 
 .hero__content h1 .highlight{
@@ -27,7 +27,7 @@
     width: auto;
     height: 450px;
     border-radius: 20px;
-    border: 1.4px solid var(--heading-color);
+    border: 1.4px solid var(--secondary-color);
     object-fit: cover;
 }
 

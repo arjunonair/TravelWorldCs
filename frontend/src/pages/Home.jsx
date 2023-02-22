@@ -16,8 +16,7 @@ const Home = () => {
       <Row>
         <Col lg='6'>
           <div className="hero__content">
-            <div className="hero__subtitle d-flex align-items-center justify-content-space-between>
-              
+            <div className="hero__subtitle d-flex align-items-center justify-content-space-between">
               <Subtitle subtitle={'Explore the world'}/>
               <img src={worldImg} alt="" />
               </div>
