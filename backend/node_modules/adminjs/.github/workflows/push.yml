@@ -1,0 +1,177 @@
+name: CI/CD
+on: [push, pull_request]
+
+jobs:
+  setup:
+    name: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - name: Install
+        run: yarn install --frozen-lockfile
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - name: Install
+        run: yarn install
+      - name: Assets cache
+        uses: actions/cache@v3
+        id: assets-cache
+        with:
+          path: src/frontend/assets/scripts
+          key: assets-${{ hashFiles('**/src/frontend/global-entry.js') }}-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/bin/bundle-globals.js') }}
+          restore-keys: |
+            assets-
+      - name: bundle globals production
+        if: steps.assets-cache.outputs.cache-hit != 'true'
+        run: NODE_ENV=production yarn bundle:globals
+      - name: bundle globals dev
+        if: steps.assets-cache.outputs.cache-hit != 'true'
+        run: NODE_ENV=dev yarn bundle:globals
+
+      - name: bundle production
+        run: NODE_ENV=production ONCE=true yarn bundle
+      - name: bundle dev
+        run: ONCE=true yarn bundle
+      - name: build
+        run: yarn build
+      - name: types
+        run: yarn types
+      - name: Upload Build
+        if: |
+          contains(github.ref, 'refs/heads/next')
+          || contains(github.ref, 'refs/heads/master')
+          || contains(github.ref, 'refs/heads/next-major')
+          || contains(github.ref, 'refs/heads/beta')
+          || contains(github.ref, 'refs/heads/dev')
+        uses: actions/upload-artifact@v3
+        with:
+          name: lib
+          path: lib
+      - name: Upload Types
+        if: |
+          contains(github.ref, 'refs/heads/next')
+          || contains(github.ref, 'refs/heads/master')
+          || contains(github.ref, 'refs/heads/next-major')
+          || contains(github.ref, 'refs/heads/beta')
+          || contains(github.ref, 'refs/heads/dev')
+        uses: actions/upload-artifact@v3
+        with:
+          name: types
+          path: types
+      - name: Upload Bundle
+        if: |
+          contains(github.ref, 'refs/heads/next')
+          || contains(github.ref, 'refs/heads/master')
+          || contains(github.ref, 'refs/heads/next-major')
+          || contains(github.ref, 'refs/heads/beta')
+          || contains(github.ref, 'refs/heads/dev')
+        uses: actions/upload-artifact@v3
+        with:
+          name: bundle
+          path: src/frontend/assets/scripts
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - name: Install
+        run: yarn install
+      - name: Lint
+        run: yarn lint
+      - name: spell
+        run: yarn cspell
+      - name: install codecov
+        run: yarn global add codecov
+        if: contains(github.ref, 'refs/heads/master')
+      - name: cover
+        if: contains(github.ref, 'refs/heads/master')
+        run: yarn codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: test
+        if: "!contains(github.ref, 'refs/heads/master')"
+        run: yarn test
+
+  publish:
+    name: Publish
+    if: |
+      github.event_name == 'push'
+      && (
+        contains(github.ref, 'refs/heads/next')
+        || contains(github.ref, 'refs/heads/master')
+        || contains(github.ref, 'refs/heads/next-major')
+        || contains(github.ref, 'refs/heads/beta')
+        || contains(github.ref, 'refs/heads/dev')
+      )
+    needs:
+      - test
+      - build
+    services:
+      mongo:
+        image: mongo:3.4.23
+        ports:
+          - 27017:27017
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - name: Install
+        run: yarn install
+      - name: Download Build
+        uses: actions/download-artifact@v3
+        with:
+          name: lib
+          path: lib
+      - name: Download Types
+        uses: actions/download-artifact@v3
+        with:
+          name: types
+          path: types
+      - name: Download Bundle
+        uses: actions/download-artifact@v3
+        with:
+          name: bundle
+          path: bundle
+      - name: Check directories exists
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "bundle/, lib/, types/"
+          fail: true
+      - name: Release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: yarn release

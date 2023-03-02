@@ -1,8 +1,8 @@
 [
   {
-    "title": "Westminister Bridge",
-    "city": "London",
-    "address": "Somewhere in London",
+    "title": "Mysore",
+    "city": "India",
+    "address": "India",
     "distance": 300,
     "price": 99,
     "maxGroupSize": 10,

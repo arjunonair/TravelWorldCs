@@ -74,11 +74,16 @@ export const singleTour = async(req,res)=>{
     }
 }
 //allTour
-export const getTour = async(req,res)=>{
+export const getAllTour = async(req,res)=>{
+    //pagination
+    const page = parseInt(req.query.page);
+    console.log(page);
+
     try {
-        const getTours = await Tour.find({})
+        const getTours = await Tour.find({}).skip(page 
+            *8).limit(8);
         res.status(200).json({
-            message: 'success', success:true,data:getTours
+            message: 'success', count: getTours.length, success:true,data:getTours
         })    } 
         catch (err) {
             res.status(404).json(
@@ -86,5 +91,64 @@ export const getTour = async(req,res)=>{
                     message:'Fetch failed', success:false
                 }
             )
+    }
+}
+
+export const getSearch = async(req,res)=>{
+
+    const title = new RegExp(req.query.title);
+    const distance = parseInt(req.query.distance);
+    const maxGroupSize = parseInt(req.query.maxGroupSize);
+
+    try {
+        const tours = await Tour.find({title,distance : {$gte:distance}, maxGroupSize: {$lte: maxGroupSize}});
+        res.status(200).json({
+            message: 'success', success:true, data:tours,
+        });
+    }
+        catch (err) {
+            res.status(404).json(
+                {
+                    message:'Fetch failed', success:false
+                }
+            ) 
+    }
+}
+
+export const getFeaturedTour = async(req,res)=>{
+    try {
+        const getFeaturedTours = await Tour.find({featured:true}).limit(8);
+        res.status(200).json(
+        {
+            message: 'success',
+            count: getFeaturedTours.length, 
+            success:true,
+            data:getFeaturedTours,
+        }
+        );
+    }
+    catch (err) {
+            res.status(404).json(
+                {
+                    message:'Fetch failed',
+                     success:false,
+                }
+            )
+    }
+}
+
+export const getTourCount = async(req,res)=>{
+    try {
+        const TourCount  = await Tour.estimatedDocumentCount({});
+        res.status(200).json({
+            success: true,
+            message: "Count obtained",
+            data: TourCount,
+        })
+    } catch (error) {
+        res.status(200).json({
+            success: false,
+            message: "Count failed",
+        })
     }
 }

@@ -6,6 +6,9 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 import tourRouter from './routing/tours.js'
+import userRouter from './routing/users.js'
+import authRouter from './routing/auth.js'
+
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
@@ -35,7 +38,9 @@ const connect = async() =>{
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
+app.use("/auth",authRouter);
 app.use("/tours",tourRouter);
+app.use("/users",userRouter);
 app.listen(port, ()=>
 {
     connect();

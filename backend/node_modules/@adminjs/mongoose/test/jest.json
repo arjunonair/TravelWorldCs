@@ -1,0 +1,12 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts", "tsx"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)sx?$": "ts-jest"
+  },
+  "setupFilesAfterEnv": ["./utils/beforeEach.ts"],
+  "globalTeardown": "./utils/teardown.ts",
+  "testTimeout": 10000
+}

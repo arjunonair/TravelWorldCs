@@ -24,8 +24,8 @@ const userSchema = new mongoose.Schema(
   },
 
   role: {
-    ype: String,
-    default: "user",
+    type: String,
+    default: "User",
   },
 
 },

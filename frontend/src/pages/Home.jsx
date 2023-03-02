@@ -23,7 +23,8 @@ const Home = () => {
               <h1>Travelling Made easy with us{" "}
               <span className="highlight">TravelWorldCs</span>
               </h1>
-              <p>Travelling is an experience that can teach us so many things that you cannot possibly learn while living at home.
+              <p>
+              Travelling is an experience that can teach us so many things that you cannot possibly learn while living at home.
 Firstly, it teaches you how to make new friends. The world is full of people who love interacting. You get to make friends when you travel to new places and spend quality time with them.You get to explore nature like never before and find discover the earth’s beauty. Travelling also helps us understand people. You learn so much about them and their culture. It makes you more open-minded and be mindful of the culture and beliefs of different people.
               </p>
           </div>

@@ -1,0 +1,27 @@
+declare const _default: {
+    email: string;
+    passwordHash: string;
+    'genre.type': string;
+    'genre.enum': string;
+    'arrayed.0': string;
+    'arrayed.1': string;
+    'parent.name': string;
+    'parent.surname': string;
+    'parent.age': number;
+    'parent.nestedArray.0.someProperty': number;
+    'parent.nestedArray.1.someProperty': number;
+    'parent.nestedObject.someProperty': number;
+    'family.0.name': string;
+    'family.0.surname': string;
+    'family.0.age': number;
+    'family.0.nestedArray.0.someProperty': number;
+    'family.0.nestedArray.1.someProperty': number;
+    'family.0.nestedObject.someProperty': number;
+    'family.1.name': string;
+    'family.1.surname': string;
+    'family.1.age': number;
+    'family.1.nestedArray.0.someProperty': number;
+    'family.1.nestedArray.1.someProperty': number;
+    'family.1.nestedObject.someProperty': number;
+};
+export default _default;

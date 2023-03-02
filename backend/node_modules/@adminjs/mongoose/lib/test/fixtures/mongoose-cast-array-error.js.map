@@ -1,0 +1,1 @@
+{"version":3,"file":"mongoose-cast-array-error.js","sourceRoot":"","sources":["../../../test/fixtures/mongoose-cast-array-error.ts"],"names":[],"mappings":";;;AAAa,QAAA,uBAAuB,GAAG;IACrC,WAAW,EAAE,IAAI;IACjB,IAAI,EAAE,UAAU;IAChB,KAAK,EAAE,EAAE;IACT,IAAI,EAAE,SAAS;IACf,MAAM,EAAE,EAEP;IACD,OAAO,EAAE,wDAAwD;IACjE,IAAI,EAAE,WAAW;CAClB,CAAA"}
