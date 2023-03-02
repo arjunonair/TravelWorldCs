@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 
 //user registration
 export const register = async(req, res) =>{
-    
+
     try {
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
@@ -20,16 +20,42 @@ export const register = async(req, res) =>{
         await newUser.save();
 
         res.status(200).json({ success: true , message: 'Successfully created new user'})
-    } catch (error) {
+    }catch (error){
         res.status(200).json({ success: false , message: 'Failed to create new user'})
     }
 }
 
 //user login
 export const login = async(req, res) =>{
+    const email = req.body.email;
+
     try {
-        
-    } catch (error) {
-        
+        const user = await User.findOne({ email })
+        if(!user){
+            res.status(404).json({ success: false , message: 'No account found'});
+        }
+        const checkPassword = await bcrypt.compare(req.body.password,user.password)
+        if(!checkPassword){
+            res.status(404).json({
+                success:false,
+                message:'Wrong password',
+            })
+        }
+        const { password, role, ...rest } = user._doc;//taking pass and role only from user to text formatting by ._doc
+
+        const token = jwt.sign(
+            { id:user._id, role:user.role },
+            process.env.JWT_SECRET_KEY,
+            {expiresIn : "15d"},
+        )
+            //token in browser cookie and sending response
+        res.cookie('accessToken' , token ,{
+            httpOnly:true,
+            // expires: new Date(Date.now() + 15 * 60 * 1000),
+            expires:token.expiresIn
+        }).status(200).json({success:true, message:'Successfully login', data: {...rest}})
+    }
+    catch (err){
+        res.status(403).json({ success: false , message: 'failed to login'})
     }
 }
