@@ -21,7 +21,7 @@ export const register = async(req, res) =>{
 
         res.status(200).json({ success: true , message: 'Successfully created new user'})
     }catch (error){
-        res.status(200).json({ success: false , message: 'Failed to create new user'})
+        res.status(404).json({ success: false , message: 'Failed to create new user'})
     }
 }
 
@@ -41,6 +41,7 @@ export const login = async(req, res) =>{
                 message:'Wrong password',
             })
         }
+
         const { password, role, ...rest } = user._doc;//taking pass and role only from user to text formatting by ._doc
 
         const token = jwt.sign(
@@ -53,7 +54,11 @@ export const login = async(req, res) =>{
             httpOnly:true,
             // expires: new Date(Date.now() + 15 * 60 * 1000),
             expires:token.expiresIn
-        }).status(200).json({success:true, message:'Successfully login', data: {...rest}})
+        }).status(200).json({
+            token,
+            data: {...rest},
+            role,
+        }) 
     }
     catch (err){
         res.status(403).json({ success: false , message: 'failed to login'})
