@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser'
 import tourRouter from './routing/tours.js'
 import userRouter from './routing/users.js'
 import authRouter from './routing/auth.js'
+import reviewRouter from './routing/review.js'
 
 dotenv.config()
 const app = express()
@@ -45,6 +46,8 @@ app.use(cookieParser());
 app.use("/api/v1/auth",authRouter);
 app.use("/api/v1/tours",tourRouter);
 app.use("/api/v1/users",userRouter);
+app.use("/api/v1/review",reviewRouter);
+
 app.listen(port, ()=>
 {
     connect();
