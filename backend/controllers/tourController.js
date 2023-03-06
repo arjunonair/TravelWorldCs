@@ -58,7 +58,7 @@ export const deleteTour = async(req,res)=>{
 export const singleTour = async(req,res)=>{
     const id = req.params.id
     try {
-        const singleTour = await Tour.findById(id);
+        const singleTour = await Tour.findById(id).populate("reviews");
         res.status(200).json(
             {
                 message:'Fetched Successfully', success:true,data:singleTour
@@ -80,8 +80,7 @@ export const getAllTour = async(req,res)=>{
     console.log(page);
 
     try {
-        const getTours = await Tour.find({}).skip(page 
-            *8).limit(8);
+        const getTours = await Tour.find({}).populate("reviews").skip(page*8).limit(8);
         res.status(200).json({
             message: 'success', count: getTours.length, success:true,data:getTours
         })    } 
@@ -146,7 +145,7 @@ export const getTourCount = async(req,res)=>{
             data: TourCount,
         })
     } catch (error) {
-        res.status(200).json({
+        res.status(403).json({
             success: false,
             message: "Count failed",
         })
