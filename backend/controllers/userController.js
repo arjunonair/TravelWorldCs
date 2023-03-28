@@ -6,7 +6,7 @@ export const createUser = async (req,res) =>
 
     try{
         const savedUser= await newUser.save();
-        res.status(200).json({ success: true , message: 'Create Successfully', data: savedUser});
+       res.status(200).json({ success: true , message: 'Create Successfully', data: savedUser});
     }
     catch (error){
         res.status(200).json({ success: false , message: 'Creation failed'});
@@ -140,7 +140,7 @@ export const getUserCount = async(req,res)=>{
             data: UserCount,
         })
     } catch (error) {
-        res.status(200).json({
+        res.status(404).json({
             success: false,
             message: "Count failed",
         })

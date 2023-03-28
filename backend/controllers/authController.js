@@ -24,9 +24,8 @@ export const register = async(req, res) =>{
         res.status(404).json({ success: false , message: 'Failed to create new user'})
     }
 }
-
 //user login
-export const login = async(req, res) =>{
+export const login = async(req, res)=>{
     const email = req.body.email;
 
     try {
@@ -52,15 +51,16 @@ export const login = async(req, res) =>{
             //token in browser cookie and sending response
         res.cookie('accessToken' , token ,{
             httpOnly:true,
-            // expires: new Date(Date.now() + 15 * 60 * 1000),
+            // expires: new Date(Date.now() + 15 * 60* 1000),
             expires:token.expiresIn
         }).status(200).json({
             token,
-            data: {...rest},
+            data:  {...rest},
             role,
-        }) 
+        })
     }
     catch (err){
-        res.status(403).json({ success: false , message: 'failed to login'})
+        console.log(err)
+        //res.status(403).json({ success: false , message: 'failed to login'})
     }
 }

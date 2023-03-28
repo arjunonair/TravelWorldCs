@@ -4,8 +4,9 @@ import tours from '../routing/tours.js'
 export const createTour = async (req,res) =>
 {
     const newTour = new Tour(req.body);
-
-    try{
+    
+    try
+    {
         const savedTour = await newTour.save();
         res.status(200).json({ success: true , message: 'Create Successfully', data: savedTour});
     }
@@ -100,7 +101,8 @@ export const getSearch = async(req,res)=>{
     const maxGroupSize = parseInt(req.query.maxGroupSize);
 
     try {
-        const tours = await Tour.find({title,distance : {$gte:distance}, maxGroupSize: {$lte: maxGroupSize}});
+        const tours = await Tour.find({title,distance : {$gte:distance}, maxGroupSize: {$gte: maxGroupSize}}).populate
+        ("reviews");
         res.status(200).json({
             message: 'success', success:true, data:tours,
         });
@@ -116,7 +118,7 @@ export const getSearch = async(req,res)=>{
 
 export const getFeaturedTour = async(req,res)=>{
     try {
-        const getFeaturedTours = await Tour.find({featured:true}).limit(8);
+        const getFeaturedTours = await Tour.find({featured:true}).populate("reviews").limit(8);
         res.status(200).json(
         {
             message: 'success',

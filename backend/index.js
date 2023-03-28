@@ -4,11 +4,11 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-
 import tourRouter from './routing/tours.js'
 import userRouter from './routing/users.js'
 import authRouter from './routing/auth.js'
 import reviewRouter from './routing/review.js'
+import bookingRouter from './routing/booking.js'
 
 dotenv.config()
 const app = express()
@@ -47,6 +47,7 @@ app.use("/api/v1/auth",authRouter);
 app.use("/api/v1/tours",tourRouter);
 app.use("/api/v1/users",userRouter);
 app.use("/api/v1/review",reviewRouter);
+app.use("/api/v1/booking",bookingRouter);
 
 app.listen(port, ()=>
 {
