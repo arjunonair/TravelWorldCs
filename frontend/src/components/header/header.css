@@ -23,12 +23,14 @@
 }
 
 .nav__item a:hover{
-    color: inherit;
+    color: var(--secondary-color)
 }
 
 .nav__item a.active__link{
     color: var(--secondary-color);
 }
+
+
 .Mobile_menu{
     font-size: 1.3rem;
     color: var(--heading-color);
