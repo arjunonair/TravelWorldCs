@@ -42,3 +42,16 @@
 .hero__img-box{
     padding-top: 2rem;
 }
+
+.services__subtitles{
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: #ee6e6e;
+    font-family: var(--subtitle-font-name);
+}
+
+.services__title{
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+

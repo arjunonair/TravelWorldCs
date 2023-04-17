@@ -17,6 +17,7 @@ const SearchBar = () => {
         {
             return alert('All fields are mandatory..!');
         }
+
 };
 
   return (

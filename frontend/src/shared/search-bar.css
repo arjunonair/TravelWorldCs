@@ -3,7 +3,7 @@
 .search__bar{
     padding: .1rem 1em;
     border-radius: 50px;
-    box-shadow: rgba(17, 12, 46, .18) 0px 40px 100px 0px;
+    box-shadow: rgba(17, 12, 46, .18) 10px 30px 200px 0px;
     width: max-content;
     margin-top: 45px;
 }
@@ -30,7 +30,7 @@
 
 .search__icon{
     font-size: 1.6rem;
-    padding: .5rem;
+    padding: .4rem;
     background: var(--secondary-color);
     color: white;
     border-radius: 10px 5px 10px 5px;
