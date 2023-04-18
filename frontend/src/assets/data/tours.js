@@ -5,19 +5,20 @@ import tourImg04 from "../images/tour-img04.jpg";
 import tourImg05 from "../images/tour-img05.jpg";
 import tourImg06 from "../images/tour-img06.jpg";
 import tourImg07 from "../images/tour-img07.jpg";
+import tourImg08 from "../images/tour-img08.jpg";
 
 const tours = [
   {
     id: "01",
-    title: "Westminister Bridge",
-    city: "London",
+    title: "Mysore Palace",
+    city: "Karnataka",
     distance: 300,
     price: 99,
     maxGroupSize: 10,
     desc: "this is the description",
     reviews: [
       {
-        name: "jhon doe",
+        name: "user",
         rating: 4.6,
       },
     ],
@@ -27,15 +28,15 @@ const tours = [
   },
   {
     id: "02",
-    title: "Bali, Indonesia",
-    city: "Indonesia",
+    title: "Munnar Hills",
+    city: "Kerala",
     distance: 400,
     price: 99,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
       {
-        name: "jhon doe",
+        name: "user",
         rating: 4.6,
       },
     ],
@@ -45,8 +46,8 @@ const tours = [
   },
   {
     id: "03",
-    title: "Snowy Mountains, Thailand",
-    city: "Thailand",
+    title: "Taj Mahal",
+    city: "Delhi",
     distance: 500,
     price: 99,
     maxGroupSize: 8,
@@ -63,16 +64,20 @@ const tours = [
   },
   {
     id: "04",
-    title: "Beautiful Sunrise, Thailand",
-    city: "Thailand",
-    distance: 500,
+    title: "Alapuzha Backwaters",
+    city: "Kerala",
+    distance: 200,
     price: 99,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
       {
-        name: "jhon doe",
+        name: "user",
         rating: 4.6,
+      },
+      {
+        name: "user1",
+        rating: 4.,
       },
     ],
     avgRating: 4.5,
@@ -81,15 +86,15 @@ const tours = [
   },
   {
     id: "05",
-    title: "Nusa Pendia Bali, Indonesia",
-    city: "Indonesia",
+    title: "India Gate",
+    city: "Maharshtra",
     distance: 500,
     price: 99,
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
       {
-        name: "jhon doe",
+        name: "user",
         rating: 4.6,
       },
     ],
@@ -99,56 +104,41 @@ const tours = [
   },
   {
     id: "06",
-    title: "Cherry Blossoms Spring",
-    city: "Japan",
+    title: "Golden Temple",
+    city: "Punjab",
     distance: 500,
     price: 99,
     maxGroupSize: 8,
     desc: "this is the description",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
-    ],
+    reviews: [],
     avgRating: 4.5,
     photo: tourImg06,
     featured: false,
   },
   {
     id: "07",
-    title: "Holmen Lofoten",
-    city: "France",
+    title: "Leh Ladakh",
+    city: "Ladakh",
     distance: 500,
     price: 99,
     maxGroupSize: 8,
     desc: "this is the description",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
-    ],
+    reviews: [],
     avgRating: 4.5,
     photo: tourImg07,
     featured: false,
   },
   {
     id: "08",
-    title: "Snowy Mountains, Thailand",
-    city: "Thailand",
+    title: "Idukki",
+    city: "Kerala",
     distance: 500,
     price: 99,
     maxGroupSize: 8,
     desc: "this is the description",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
-    ],
+    reviews: [],
     avgRating: 4.5,
-    photo: tourImg03,
+    photo: tourImg08,
     featured: false,
   },
 ];

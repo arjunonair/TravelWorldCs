@@ -8,7 +8,7 @@ import worldImg from '../assets/images/world.png';
 import Subtitle from '../shared/subtitles';
 import SearchBar from '../shared/SearchBar';
 import ServiceList from '../services/serviceList';
-
+import FeaturedTourList from '../components/featuredTour/FeaturedTourList';
 
 const Home = () => {
   return <>
@@ -54,7 +54,7 @@ const Home = () => {
           <Container>
             <Row>
               <Col lg='3'>
-                <h5 className='services__subtitles'>What we serve</h5>
+                <Subtitle subtitle={'What We Serve'} />
                 <h2 className='services__title'>We offer our best Services</h2>
               </Col>
               <ServiceList />
@@ -65,10 +65,13 @@ const Home = () => {
         {/* Featured Tour */}
         <section>
           <Container>
+            <Row>
             <Col lg='12' className='mb-5'>
               <Subtitle subtitle={'Explore'}/>
               <h2 className='featured__tour-title'>Our featured tours</h2>
             </Col>
+            <FeaturedTourList />
+            </Row>
           </Container>
         </section>
   </>
