@@ -18,31 +18,32 @@ const TourCard = ({tour}) => {
         </div>
 
         <CardBody>
-        <div className='card__top d-flex align-items-center justify-content-between'>
-        
-          <span className='tour__location d-flex align-items-center gap-1'>
-          <i class="ri-map-pin-line"></i> {city}
-          </span>
-
-          <span className='tour__rating d-flex align-items-center gap-1'>
-          <i class="ri-star-fill"></i> {avgRating === 0? null : avgRating}
-          {totalRating === 0 ? 'Not yet Reviewed' : 
-          <span>
-            ({reviews.length})
-          </span>}
+          <div className='card__top d-flex align-items-center justify-content-between'>
           
-          </span>
-          </div>
+            <span className='tour__location d-flex align-items-center gap-1'>
+              <i class="ri-map-pin-line"></i> {city}
+            </span>
 
-          <h5 className='tour__title'>
-            <Link to={`/tours/${id}`}>{title}</Link>
-          </h5>
-          <div className='card__bottom d-flex align-items-center justify-content-between mt-3'>
-            <h5>Rs.{price} <span> /per person</span></h5>
-            <button className='btn booking__btn'>
-              <Link to={`/tours/${id}`}>Book Now! </Link>
-            </button>
-          </div>
+            <span className='tour__rating d-flex align-items-center gap-1'>
+            <i class="ri-star-fill"></i> 
+            {avgRating === 0? null : avgRating}
+            {totalRating === 0 ? 'Not yet Reviewed' : 
+            <span>
+              ({reviews.length})
+            </span>}
+
+            </span>
+            </div>
+
+            <h5 className='tour__title'>
+              <Link to={`/tours/${id}`}>{title}</Link>
+            </h5>
+            <div className='card__bottom d-flex align-items-center justify-content-between mt-3'>
+              <h5>Rs.{price} <span> /per person</span></h5>
+              <button className='btn booking__btn'>
+                <Link to={`/tours/${id}`}>Book Now! </Link>
+              </button>
+            </div>
       </CardBody>
       </Card>
       

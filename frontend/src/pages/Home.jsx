@@ -9,6 +9,7 @@ import Subtitle from '../shared/subtitles';
 import SearchBar from '../shared/SearchBar';
 import ServiceList from '../services/serviceList';
 import FeaturedTourList from '../components/featuredTour/FeaturedTourList';
+import Experienceimg from '../assets/images/experienceimg.png';
 
 const Home = () => {
   return <>
@@ -71,6 +72,58 @@ const Home = () => {
               <h2 className='featured__tour-title'>Our featured tours</h2>
             </Col>
             <FeaturedTourList />
+            </Row>
+          </Container>
+        </section>
+        {/* experience section*/}
+        <section>
+          <Container>
+            <Row>
+              <Col lg='6'>
+                <div className='experience__content'>
+                  <Subtitle subtitle={'Experience'} />
+                  <h2 >With all our experience<br />We will serve you</h2>
+                  <p>lorem lorem lorem</p>
+                </div>
+
+                <div className='counter__wrapper d-flex align-items-center gap-5'>
+                  <div className='counter__box'>
+                    <span>0</span>
+                    <h6>Successful Trips</h6>
+                  </div>
+
+                  <div className='counter__box'>
+                  <span>0</span>
+                  <h6>Regular Clients</h6>
+                  </div>
+
+                  <div className='counter__box'>
+                  <span>0</span>
+                  <h6>Work Experience</h6>
+                  </div>
+                  
+                </div>
+              </Col>
+              <Col lg='6'>
+                <div className='experience__img'>
+                  <img src={Experienceimg} alt=''/>
+                </div>
+              </Col>
+           </Row>
+          </Container>
+        </section>
+
+        {/* gallery section */}
+        <section>
+          <Container>
+            <Row>
+              <Col lg='12'>
+                <Subtitle subtitle={'Gallery'}/>
+                <h2 className='gallery__title'>Visit our customers tour gallery</h2>
+              </Col>
+              <Col lg='12'>
+
+              </Col>
             </Row>
           </Container>
         </section>

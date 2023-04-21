@@ -59,3 +59,51 @@
     font-size: 2.3rem;
     font-weight: 500;
 }
+
+.experience__content h2{
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.experience__content p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-top: 1rem;
+}
+
+.counter__wrapper {
+    margin-top: 2.5rem;
+}
+
+.counter__box span{
+    width: 70px;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 790;
+    border-radius: 10px 5px 10px 0 ;
+}
+
+.counter__box h6{
+    font-size: 1.1rem;
+    margin-top: .7rem;
+    color: var(--text-color);
+}
+
+.experience__img img{
+    width: 90%;
+    margin-bottom: -10%;
+    margin-top: -100px;
+}
+
+.gallery__title{
+    font-size: 2.3rem;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+}
