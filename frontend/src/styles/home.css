@@ -100,10 +100,31 @@
     width: 90%;
     margin-bottom: -10%;
     margin-top: -100px;
+    /* filter: drop-shadow(8px 6px 2px #ff7e01); */
 }
 
 .gallery__title{
     font-size: 2.3rem;
     margin-bottom: 2.5rem;
     margin-top: 1rem;
+}
+
+.review__title{
+    font-size: 2.3rem;
+    margin-top: 1rem;
+}
+
+/* slider preview */
+
+.review__title{
+    font-size: 2.3rem;
+    margin-top: 1rem;
+    top: -20px;
+    padding: 40px 0;
+
+}
+
+.review__title:before,
+.review__title:before {
+  color: black;
 }

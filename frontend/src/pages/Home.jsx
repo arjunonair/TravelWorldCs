@@ -10,6 +10,10 @@ import SearchBar from '../shared/SearchBar';
 import ServiceList from '../services/serviceList';
 import FeaturedTourList from '../components/featuredTour/FeaturedTourList';
 import Experienceimg from '../assets/images/experienceimg.png';
+import ImageGallery from '../components/image-gallery/imageGallery';
+import Review from '../components/Review-section/review';
+import Newsletter from '../shared/NewsLetter';
+
 
 const Home = () => {
   return <>
@@ -122,11 +126,31 @@ const Home = () => {
                 <h2 className='gallery__title'>Visit our customers tour gallery</h2>
               </Col>
               <Col lg='12'>
-
+              <ImageGallery />
               </Col>
             </Row>
           </Container>
         </section>
+
+        {/* Review section */}
+        <section>
+          <Container>
+            <Row>
+              <Col lg='12'>
+                <Subtitle subtitle={"Reviews"} />
+                <h2 className='review__title'>Our Customers note</h2>
+              </Col>
+              <Col lg='12'>
+                <Review />
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        {/* Footer section */}
+
+        <Newsletter />
+
   </>
 }
 

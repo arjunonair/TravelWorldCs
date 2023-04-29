@@ -1,0 +1,12 @@
+
+
+.gallery__img{
+    transition: .4s;
+    width: 100%;
+    display:block;
+    border-radius: 10px;
+}
+
+.gallery__img:hover{
+    transform: scale(1.1);
+}

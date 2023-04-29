@@ -1,0 +1,8 @@
+
+
+.img__avatar{
+    width: 90px;
+    height: 100px;
+    border-radius: 10px;
+    border-color: var(--secondary-color);
+}
