@@ -22,6 +22,7 @@
 
 .form__group input:focus{
     margin-bottom: 0px;
+    outline: none;
 }
 
 .form__group-fast{

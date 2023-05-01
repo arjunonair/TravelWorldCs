@@ -6,6 +6,7 @@ import maletourist from '../assets/images/male-tourist.png'
 
 const Newsletter = () => {
   return (
+    <section className='newsletter__section'>
     <Container>
         <Row>
             <Col lg='6'>
@@ -28,6 +29,7 @@ const Newsletter = () => {
             </Col>
         </Row>
     </Container>
+    </section>
   )
 }
 

@@ -1,13 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Island+Moments&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Poppins:wght@300&display=swap');
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --primary-color: #ff7e01;
-  --secondary-color: #faa935;
-  --heading-color: #0b2727;
+  --primary-color:#FF5349;
+  --secondary-color: #FF8300;
+  --heading-color: #0b2727;    
   --text-color: #6e7074;
   --font-name: "Montserrat", sans-serif;
-  --subtitle-font-name: "Island Moments", cursive;
+  --subtitle-font-name:'Caveat', cursive;
 }
 
 * {
@@ -53,8 +55,10 @@ ul {
   text-decoration: none;
   color: #fff;
 }
-.primary__btn a:hover {
-  color: inherit;
+
+.primary__btn :is(:focus, :hover){
+  outline-offset: 3px;
+  color: #fff;
 }
 .secondary__btn {
   background: transparent !important;

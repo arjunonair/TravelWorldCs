@@ -3,6 +3,8 @@ import {Container, Row, Button} from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
 import './header.css'
+import { useRef,useEffect } from 'react';
+
 const nav__links=[
   {
     path:'/home',
@@ -19,8 +21,29 @@ const nav__links=[
     display:'Tours'
   }
 ]
+
+
+
 const Header = () => {
-  return <header classname="header">
+
+const headerRef = useRef(null);
+
+const stickyHeader = () =>{
+    window.addEventListener('scroll', () => {
+      headerRef.current.classList.add('sticky__header')
+    }
+  )
+}
+
+useEffect(()=>{
+stickyHeader()
+
+return window.removeEventListener('scroll',stickyHeader)
+}
+)
+
+
+  return <header classname="header" ref={headerRef}>
     <Container>
       <Row>
         <div className="nav__wrapper d-flex align-items-center
