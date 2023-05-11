@@ -28,9 +28,9 @@ const TourCard = ({tour}) => {
             <i class="ri-star-fill"></i> 
             {avgRating === 0? null : avgRating}
             {totalRating === 0 ? 'Not yet Reviewed' : 
-            <span>
-              ({reviews.length})
-            </span>}
+              <span>
+                ({reviews.length})
+              </span>}
 
             </span>
             </div>

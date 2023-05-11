@@ -1,0 +1,25 @@
+
+.tour__content img{
+    width: 100%;
+    border-radius: .5rem;
+    margin-bottom: 2.5rem;
+}
+
+.tour__info{
+    margin-bottom: 2rem;
+    border-radius: .5rem;
+    border: 1px solid rgb(229, 231, 235);
+    padding: 2rem;
+}
+
+.tour__info h2{
+    font-size: 1.5rem;
+}
+
+.tour__info span{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-style: 1rem;
+    color: var(--text-color);
+}

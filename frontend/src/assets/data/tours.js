@@ -14,6 +14,7 @@ const tours = [
     city: "Karnataka",
     distance: 300,
     price: 99,
+    address: "Evideyooo ntho",
     maxGroupSize: 10,
     desc: "this is the description",
     reviews: [
@@ -32,6 +33,7 @@ const tours = [
     city: "Kerala",
     distance: 400,
     price: 99,
+    address: "Evideyooo ntho",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -50,6 +52,7 @@ const tours = [
     city: "Delhi",
     distance: 500,
     price: 99,
+    address: "Evideyooo ntho",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -68,6 +71,7 @@ const tours = [
     city: "Kerala",
     distance: 200,
     price: 99,
+    address: "Evideyooo ntho",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -90,6 +94,7 @@ const tours = [
     city: "Maharshtra",
     distance: 500,
     price: 99,
+    address: "Evideyooo ntho",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [
@@ -108,6 +113,7 @@ const tours = [
     city: "Punjab",
     distance: 500,
     price: 99,
+    address: "Evideyooo ntho",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [],
@@ -121,6 +127,7 @@ const tours = [
     city: "Ladakh",
     distance: 500,
     price: 99,
+    address: "Evideyooo ntho",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [],
@@ -134,6 +141,7 @@ const tours = [
     city: "Kerala",
     distance: 500,
     price: 99,
+    address: "Evideyooo ntho",
     maxGroupSize: 8,
     desc: "this is the description",
     reviews: [],
