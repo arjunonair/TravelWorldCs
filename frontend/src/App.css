@@ -4,9 +4,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --primary-color:#FF5349;
-  --secondary-color: #FF8300;
-  --heading-color: #0b2727;    
+  --primary-color:#283945;
+  --secondary-color: #00823C;
+  --heading-color: #0b2727;
   --text-color: #6e7074;
   --font-name: "Montserrat", sans-serif;
   --subtitle-font-name:'Caveat', cursive;

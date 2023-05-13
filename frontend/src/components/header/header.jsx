@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container, Row, Button} from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom'
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/logo3.png'
 import './header.css'
 import { useRef,useEffect } from 'react';
 
@@ -43,14 +43,18 @@ return window.removeEventListener('scroll',stickyHeader)
 )
 
 
-  return <header classname="header" ref={headerRef}>
+  return <header className="header" ref={headerRef}>
     <Container>
       <Row>
         <div className="nav__wrapper d-flex align-items-center
-        justify-content-between">
+        justify-content-evenly">
+          
           <div className="logo">
+          <Link to={'/'}>
             <img className='photo' src={logo} alt="" />
+            </Link>
           </div>
+          
           <div className='navigation'>
             <ul className="menu d-flex align-items-center gap-5 ">
               {nav__links.map((item,index)=>(

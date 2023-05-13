@@ -1,5 +1,6 @@
 
 
+
 .tour__img img{
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -9,6 +10,11 @@
 .card{
     border: none !important;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    transition: .4s;
+}
+
+.card:hover{
+    transform: scale(1.1);
 }
 
 .tour__img{

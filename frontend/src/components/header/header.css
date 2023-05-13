@@ -5,9 +5,11 @@
     height: 80px;
     line-height: 80px;
 }
-
-.logo img{
+.logo{
     width: 40%;
+}
+.logo img{
+    width: 50%;
 }
 
 .menu

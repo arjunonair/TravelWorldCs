@@ -3,7 +3,7 @@ import React from 'react'
 import {Col,Container,Row ,ListGroup, ListGroupItem} from 'reactstrap'
 import {Link} from 'react-router-dom'
 
-import logo from '../../assets/images/logo.png'
+import logo from '../../assets/images/logo3.png'
 import "./footer.css"
 
 const fut__links=[
