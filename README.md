@@ -1,6 +1,8 @@
 # TravelWorldCs
 Helps to book and organize the tour 
 
+Sample Screenshots: 
+![image](https://github.com/arjunonair/TravelWorldCs/assets/83801097/58c7eac5-1f52-4d87-abf4-4078a4068e6e)
 
 In the project directory, you can run:
 
