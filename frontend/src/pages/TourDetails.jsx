@@ -8,6 +8,7 @@ import calculateAvgRating from '../utils/avgRating';
 
 import avatarImg from '../assets/images/avatar.jpg'
 import Booking from '../components/booking/booking'
+import Newsletter from '../shared/NewsLetter'
 
 const TourDetails = () => {
 
@@ -144,11 +145,12 @@ const TourDetails = () => {
           </Col>
 
           <Col lg='4'>
-            <Booking tour={tour} />
+            <Booking tour={tour} avgRating={avgRating} />
           </Col>
         </Row>
       </Container>
     </section>
+    <Newsletter />
     </>
   )
 }

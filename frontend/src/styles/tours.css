@@ -19,3 +19,14 @@
     background-color: var(--secondary-color);
     color: white !important;
 }
+
+.custom {
+    width: max-content;
+    height: 5rem;
+    margin-top: 40px;
+}
+.search__tour{
+    display: flex;
+    justify-content: center;
+    margin-left: 100px;
+}

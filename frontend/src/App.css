@@ -8,6 +8,7 @@
   --secondary-color: #00823C;
   --heading-color: #0b2727;
   --text-color: #6e7074;
+  --border-color:rgb(229, 231, 235);
   --font-name: "Montserrat", sans-serif;
   --subtitle-font-name:'Caveat', cursive;
 }
@@ -25,7 +26,9 @@ body {
 section {
   padding: 50px 0px;
 }
-
+ul{
+  list-style: none;
+}
 h1,
 h2,
 h3,
@@ -38,9 +41,6 @@ h6 {
 a {
   text-decoration: none;
   color: unset;
-}
-ul {
-  list-style: none;
 }
 
 .primary__btn {
@@ -58,7 +58,7 @@ ul {
 
 .primary__btn :is(:focus, :hover){
   outline-offset: 3px;
-  color: #fff;
+  color: #fff;    
 }
 .secondary__btn {
   background: transparent !important;

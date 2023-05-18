@@ -1,6 +1,7 @@
 
 import Tour from '../models/Tour.js'
 import tours from '../routing/tours.js'
+
 export const createTour = async (req,res) =>
 {
     const newTour = new Tour(req.body);
@@ -75,6 +76,7 @@ export const singleTour = async(req,res)=>{
     }
 }
 //allTour
+
 export const getAllTour = async(req,res)=>{
     //pagination
     const page = parseInt(req.query.page);

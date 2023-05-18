@@ -6,8 +6,9 @@ import tours from '../assets/data/tours.js'
 import Newsletter from '../shared/NewsLetter.jsx'
 import TourCard from '../shared/TourCard.jsx'
 import SearchBar from '../shared/SearchBar.jsx'
+import { Link } from 'react-router-dom'
 
-import {Container, Row,Col } from 'reactstrap'
+import {Container, Row,Col, Button } from 'reactstrap'
 
 const Tours = () => {
 
@@ -26,8 +27,8 @@ const Tours = () => {
     <CommonSection title={'All tours'}/>
 
     <section className='Tour__section'>
-      <Container>
-        <Row>
+      <Container className='search__tour'>
+        <Row >
           <SearchBar />
         </Row>
       </Container>
@@ -55,6 +56,11 @@ const Tours = () => {
         </Row>
       </Container>
     </section>
+    <Button className='btn primary__btn custom'>
+            <Link to='/customizable'>
+              Customize your Tour
+            </Link>
+    </Button>
     <Newsletter/>
     </>
   )
