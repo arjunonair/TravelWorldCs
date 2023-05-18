@@ -46,7 +46,7 @@ const Footer = () => {
       <Container>
         <Row>
           <Col lg='3'>
-            <div className='logo'>
+            <div className='fut__logo'>
               <img src = {logo} alt=''/>
               <p>lorem ipsum</p>
             </div>
