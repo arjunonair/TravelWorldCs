@@ -47,7 +47,7 @@ ul{
         height : 80px;
         line-height: 80px;
         background: #fff;
-        position:sticky; 
+        position: sticky; 
         top: 0;
         box-shadow:3px 3px 8px -3px rgb(196, 169, 169);
         z-index: 999; 

@@ -1,0 +1,78 @@
+
+
+.register__img{
+    width: 60%;
+    text-align: center;
+}
+
+.register__img img{
+    width: 75%;
+    object-fit: contain;
+}
+
+.register__form{
+    padding: 50px;
+    background: var(--primary-color);
+}
+
+.register__container{
+    box-shadow: rgba(17, 12, 46, .15) 0px 48px 100px 0px;
+    margin-top: 50px;
+}
+
+.register__form .register__user{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 25%;
+    top: 26%;
+    transform: translate(-50%,-9%);
+}
+
+.register__user img{
+    width: 100%;
+}
+
+.register__form h2{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: .2rem;
+}
+
+.register__form{
+    width: 40%;
+}
+
+.register__form input{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    color: var(--heading-color);
+}
+
+.register__form input:focus{
+    outline: none;
+}
+
+.auth__btn{
+    background: var(--secondary-color) !important;
+    width: 100%;
+    color: #fff !important;
+}
+
+.register__form p{
+    font-size: .9rem;
+    color: #fff;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.register__form p a{
+    color: #999;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: 500;
+}

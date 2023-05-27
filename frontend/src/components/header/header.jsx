@@ -23,7 +23,6 @@ const nav__links=[
 ]
 
 
-
 const Header = () => {
 
 const headerRef = useRef(null);
@@ -37,7 +36,6 @@ const stickyHeader = () =>{
 
 useEffect(()=>{
 stickyHeader()
-
 return window.removeEventListener('scroll',stickyHeader)
 }
 )
@@ -59,10 +57,9 @@ return window.removeEventListener('scroll',stickyHeader)
             <ul className="menu d-flex align-items-center gap-5 ">
               {nav__links.map((item,index)=>(
                 <li className="nav__item" key={index}>
-                  <NavLink to ={item.path} className={navClass=>
+                  <NavLink to={item.path} className={navClass=>
                     navClass.isActive ? 'active__link':""
-                    }
-                    >
+                    }>
                     {item.display}
                     </NavLink>
                 </li>
