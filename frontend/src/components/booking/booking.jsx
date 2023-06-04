@@ -26,7 +26,6 @@ const Booking = ({tour, avgRating}) => {
     }))
     } 
 
-
     const serviceFee = 10;
     const totalAmount = Number(price) * Number(credentials.guestSize) + Number(serviceFee)
 
