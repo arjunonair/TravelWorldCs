@@ -1,12 +1,15 @@
 
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container,Col, Row, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import '../styles/thank-you.css'
 import check from '../assets/images/checkmark.gif'
 
 const ThankYou = () => {
+    useEffect(()=>{
+        window.scrollTo(0,0) 
+       })
   return (
     <section>
         <Container>

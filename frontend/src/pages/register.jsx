@@ -1,9 +1,12 @@
-import React ,{useState} from "react";
+import React ,{useState, useContext} from "react";
 import { Container, Col, Row, Form, FormGroup, Button } from "reactstrap";
 import "../styles/register.css";
 import registerImg from "../assets/images/register.gif";
 import userImg from "../assets/images/man.png"
 import { Link, useNavigate } from "react-router-dom";
+
+import { authContext } from './../context/authContext';
+import {BASE_URL} from './../utils/config'
 
 const Register = () => {
 
@@ -14,16 +17,36 @@ const Register = () => {
     password:undefined
   });
 
+  const {dispatch} = useContext(authContext)
 
   const handleChange= e =>{
     setCredentials(prev=>({...prev,[e.target.id]:e.target.value
   }))
   }
  
-  const handleClick = e => {
+  const handleClick = async e => {
     e.preventDefault();
-    console.log(credentials);
-    navigate('/home')
+    
+    try{
+      const res = await fetch(`${BASE_URL}/auth/register`,
+      {
+        method:'post',
+        headers:{
+          'content-type':'application/json'
+        },
+        body: JSON.stringify(credentials)
+      })
+      const result = await res.json()
+
+      if(!res.ok ) alert(result.message)
+
+      dispatch({type: 'REGISTER_SUCCESS'});
+      alert('Successfully created your account')
+      navigate("/login")
+    }
+    catch(err){
+      alert(err.message)
+    }
    }
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import '../styles/home.css';
 import { Container,Row,Col } from 'reactstrap';
 import heroImg from '../assets/images/heroimg_2.jpg';
@@ -16,6 +16,9 @@ import Newsletter from '../shared/NewsLetter';
 
 
 const Home = () => {
+  useEffect(()=>{
+    window.scrollTo(0,0) 
+   })
   return <>
   {/*hero container*/}
   <section>

@@ -29,7 +29,6 @@ const SearchBar = () => {
     }
 
     const result = await res.json();
-    console.log(result.data);
     navigation(
       `/tours/search?title=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
       { state: result.data }

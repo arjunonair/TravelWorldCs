@@ -20,7 +20,7 @@ export const register = async(req, res) =>{
         await newUser.save();
 
         res.status(200).json({ success: true , message: 'Successfully created new user'})
-    }catch (error){
+    }catch (err){
         res.status(404).json({ success: false , message: 'Failed to create new user'})
     }
 }
