@@ -15,7 +15,7 @@ import {BASE_URL} from '../utils/config'
 const TourDetails = () => {
   useEffect(()=>{
     window.scrollTo(0,0)
-   },[tourData])
+   },[])
   const { id } = useParams();
   const reviewMsgRef = useRef("");
   const [tourRating, setTourRating] = useState(null);

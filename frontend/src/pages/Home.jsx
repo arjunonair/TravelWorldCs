@@ -13,6 +13,7 @@ import Experienceimg from '../assets/images/experienceimg.png';
 import ImageGallery from '../components/image-gallery/imageGallery';
 import Review from '../components/Review-section/review';
 import Newsletter from '../shared/NewsLetter';
+// import SupportEngine from '../services/supportengine';
 
 
 const Home = () => {
@@ -151,7 +152,7 @@ const Home = () => {
         </section>
 
         {/* Footer section */}
-
+        {/* <SupportEngine /> */}
         <Newsletter />
 
   </>

@@ -8,6 +8,8 @@ import Register from '../pages/register'
 import Login from '../pages/login'
 import ThankYou from '../pages/ThankYou'
 import Customize from '../pages/Customize'
+import SupportAdmin from '../services/SupportAdmin'
+
 // import Footer_M from '../mechcart/Footer_M'
 
 const Routers = () =>{
@@ -22,6 +24,7 @@ const Routers = () =>{
         <Route path='/tours/search' element={<SearchResult />} /> 
         <Route path='/register' element={<Register />} />
         <Route path='/thank-you' element={<ThankYou />} />
+        <Route path='support' element={<SupportAdmin />} />
         {/* <Route path='/footer' element={<Footer_M />} /> */}
     </Routes>
   );
