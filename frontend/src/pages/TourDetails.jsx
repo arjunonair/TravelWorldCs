@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useContext } from "react";
 import "../styles/tour-details.css";
 
 import { Container, Row, Col, Form, ListGroup } from "reactstrap";
@@ -11,6 +11,7 @@ import Newsletter from "../shared/NewsLetter";
 
 import useFetch from '../hooks/useFetch'
 import {BASE_URL} from '../utils/config'
+import { authContext } from "../context/authContext";
 
 const TourDetails = () => {
   useEffect(()=>{
@@ -19,8 +20,10 @@ const TourDetails = () => {
   const { id } = useParams();
   const reviewMsgRef = useRef("");
   const [tourRating, setTourRating] = useState(null);
+  
+  const { user } = useContext(authContext);
 
-  // const tour = tours.find((tour) => tour.id === id); //later backend
+  // const tour = tours.find((tour) => tour.id === id); //later backend set aka
 
   const {data:tourData} = useFetch(`${BASE_URL}/tours/${id}`)
 
@@ -40,10 +43,35 @@ const TourDetails = () => {
 
   const options = { day: "numeric", month: "long", year: "numeric" };
 
-  const submitHandler = (e) => {
+  const submitHandler = async e => {
     e.preventDefault();
-    const ratingText = reviewMsgRef.current.value;
-    alert(`${ratingText},${tourRating}`);
+    const reviewText = reviewMsgRef.current.value;
+
+    try {
+      if(!user || user ===undefined || user===null){
+        alert('please sign in')
+      }
+      const reviewObj = {
+        username : user?.username,
+        reviewText,
+        rating : tourRating
+      }
+
+      const res = await fetch(`${BASE_URL}/review/${id}`,{
+        method: 'post',
+        headers : {
+          'content-type' : 'application/json'
+        },
+        credentials:'include',
+        body : JSON.stringify(reviewObj)
+      })
+
+    const result = await res.json()
+    if(!res.ok){ alert(result.message )}
+    alert(result.message)
+    } catch (err) {
+      alert(err.message)  
+    }
   };
 
   return (
@@ -145,19 +173,19 @@ const TourDetails = () => {
                         <div className="w-100">
                           <div className="d-flex align-items-center justify-content-between">
                             <div>
-                              <h5>User</h5>
+                              <h5>{review.username}</h5>
                               <p>
-                                {new Date("05-12-2023").toLocaleDateString(
+                                {new Date(review.createdAt).toLocaleDateString(
                                   "en-IN",
                                   options
                                 )}
                               </p>
                             </div>
                             <span className="d-flex align-items-center">
-                              5<i class="ri-star-s-fill"></i>
+                            {review.rating}<i class="ri-star-s-fill"></i>
                             </span>
                           </div>
-                          <h5>Amazing Tour</h5>
+                          <h5>{review.reviewText}</h5>
                         </div>
                       </div>
                     ))}
@@ -165,7 +193,7 @@ const TourDetails = () => {
                 </div>
               </div>
             </Col>
-
+            
             <Col lg="4">
               <Booking tour={tourData} avgRating={avgRating} />
             </Col>

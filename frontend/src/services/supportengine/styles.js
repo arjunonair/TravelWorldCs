@@ -5,7 +5,7 @@ export const styles = {
         // Border
         borderRadius: '50%',
         // Background 
-        backgroundImage: `url(https://chat-engine-assets.s3.amazonaws.com/tutorials/my-face-min.png)`, 
+        backgroundImage: `url(https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-green-globe-earth-icon-png-image_5028739.png)`, 
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: '84px',
@@ -25,8 +25,9 @@ export const styles = {
         padding: '12px 12px 12px 16px',
         borderRadius: '24px', 
         // Color
-        backgroundColor: '#f9f0ff',
-        color: 'black',
+        backgroundColor: '#00823C',
+        color: 'white',
+        fontWeight : '600'
     },
     supportWindow: {
         // Position
@@ -34,14 +35,14 @@ export const styles = {
         bottom: '116px',
         right: '24px',
         // Size
-        width: '420px',
-        height: '530px',
+        width: '380px',
+        height: '430px',
         maxWidth: 'calc(100% - 48px)',
         maxHeight: 'calc(100% - 48px)',
         backgroundColor: 'white',
         // Border
         borderRadius: '12px',
-        border: `2px solid #7a39e0`,
+        border: `2px solid #00823C`,
         overflow: 'hidden',
         // Shadow
         boxShadow: '0px 0px 16px 6px rgba(0, 0, 0, 0.33)',
@@ -58,7 +59,7 @@ export const styles = {
         top: '-45px',
         width: '100%',
         height: '308px',
-        backgroundColor: '#7a39e0',
+        backgroundColor: '#283945',
         transform: 'skewY(-12deg)',
     },
     topText: { 
@@ -75,13 +76,13 @@ export const styles = {
         outline: 'none',
         padding: '12px',
         borderRadius: '12px',
-        border: '2px solid #7a39e0',
+        border: '2px solid #00823C',
     },
     bottomText: { 
-        position: 'absolute', 
+        position: 'absolute',
         width: '100%', 
-        top: '60%', 
-        color: '#7a39e0', 
+        top: '70%', 
+        color: '#283945', 
         fontSize: '24px', 
         fontWeight: '600' 
     },

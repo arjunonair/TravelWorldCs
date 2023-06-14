@@ -1,0 +1,63 @@
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 50px auto;
+    width: 500px;
+  }
+  
+  .cover-photo {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .cover-photo img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .profile-info {
+    margin-top: 20px;
+  }
+  
+  .avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin: 10px 0;
+  }
+  
+  .username {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .bio {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .location {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  
+  .website {
+    font-size: 14px;
+    color: #00aaff;
+    text-decoration: none;
+  }
+  
+  .website:hover {
+    text-decoration: underline;
+  }
+  

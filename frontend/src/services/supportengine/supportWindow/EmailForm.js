@@ -101,7 +101,7 @@ const EmailForm = props => {
                 />
 
                 <div style={styles.topText}>
-                    Welcome to my <br /> support 👋
+                    Welcome to TravelWorld <br /> support 👋
                 </div>
 
                 <form 

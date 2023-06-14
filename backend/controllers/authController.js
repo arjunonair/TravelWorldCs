@@ -3,6 +3,7 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs"
 import jwt from 'jsonwebtoken'
 
+
 //user registration
 export const register = async(req, res) =>{
 
@@ -46,13 +47,13 @@ export const login = async(req, res)=>{
         const token = jwt.sign(
             { id:user._id, role:user.role },
             process.env.JWT_SECRET_KEY,
-            {expiresIn : "15d"},
+            {expiresIn :'15d'},
         )
             //token in browser cookie and sending response
         res.cookie('accessToken' , token ,{
             httpOnly:true,
-            // expires: new Date(Date.now() + 15 * 60* 1000),
-            expires:token.expiresIn
+            expires: new Date(Date.now() + 15 *24 *60 *60* 1000)
+            // expires:token.expiresIn
         }).status(200).json({
             token,
             data:  {...rest},

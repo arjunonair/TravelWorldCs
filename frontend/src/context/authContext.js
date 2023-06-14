@@ -4,7 +4,7 @@ import React, { createContext, useEffect, useReducer } from 'react';
 const initial_scale = {
      user : localStorage.getItem('user') !== undefined ? JSON.parse(localStorage.getItem('user')) : null,
      loading : false,
-     error : null    
+     error : null
 }
 
 export const authContext = createContext(initial_scale)
@@ -60,7 +60,7 @@ export const AuthContextProvider = ({children})=>{
         user:state.user,
         loading:state.loading,
         error : state.error,
-        dispatch
+        dispatch,
     }}>
         {children}
     </authContext.Provider>

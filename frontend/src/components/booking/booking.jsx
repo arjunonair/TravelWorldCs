@@ -4,6 +4,7 @@ import './booking.css'
 import {Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import {useNavigate} from 'react-router-dom'
 
+//49/40/40/49
 
 const Booking = ({tour, avgRating}) => {
 
