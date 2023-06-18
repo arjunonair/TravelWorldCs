@@ -23,9 +23,11 @@ const customSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    price : {
+      type : Number
+    },
     isApproved : {
-        type : Boolean,
-        default : false,
+        type : Boolean
     }
   },
   { timestamps: true }

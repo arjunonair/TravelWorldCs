@@ -1,63 +1,33 @@
-.profile-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 50px auto;
-    width: 500px;
-  }
-  
-  .cover-photo {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-  }
-  
-  .cover-photo img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .profile-info {
-    margin-top: 20px;
-  }
-  
-  .avatar img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-  }
-  
-  h1 {
-    font-size: 28px;
-    margin: 10px 0;
-  }
-  
-  .username {
-    font-size: 18px;
-    color: #666;
-  }
-  
-  .bio {
-    font-size: 16px;
-    margin: 10px 0;
-  }
-  
-  .location {
+.student-profile{
+  background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+  url(../assets/images/tour.jpg);
+}
+.student-profile .card {
+  border-radius: 10px;
+}
+
+.student-profile .card .card-header .profile_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px auto;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+}
+
+.student-profile .card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.student-profile .card p {
+  font-size: 16px;
+  color: #000;
+}
+
+.student-profile .table th,
+.student-profile .table td {
     font-size: 14px;
-    color: #888;
-    margin-bottom: 20px;
-  }
-  
-  .website {
-    font-size: 14px;
-    color: #00aaff;
-    text-decoration: none;
-  }
-  
-  .website:hover {
-    text-decoration: underline;
-  }
-  
+    padding: 5px 10px;
+    color: #000;
+}

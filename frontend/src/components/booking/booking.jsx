@@ -1,13 +1,17 @@
 
-import React,{useState} from 'react'
+import React,{useState ,useContext } from 'react'
 import './booking.css'
 import {Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import {useNavigate} from 'react-router-dom'
+import {authContext} from '../../context/authContext'
+
+import {BASE_URL} from '../../utils/config'
 
 //49/40/40/49
 
 const Booking = ({tour, avgRating}) => {
 
+    const {user} = useContext(authContext)
     const navigate = useNavigate();
     const [credentials,setCredentials] = useState(
       {

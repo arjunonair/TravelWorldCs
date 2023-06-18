@@ -9,7 +9,7 @@ export const createUser = async (req,res) =>
        res.status(200).json({ success: true , message: 'Create Successfully', data: savedUser});
     }
     catch (error){
-        res.status(200).json({ success: false , message: 'Creation failed'});
+        res.status(400).json({ success: false , message: 'Creation failed'});
     }
 };
 
@@ -26,7 +26,7 @@ export const updateUser = async(req,res)=>{
             }
         )
     } catch (error) {
-        res.status(200).json(
+        res.status(400).json(
             {
                 message:'Update failed', success:false
             }
@@ -44,7 +44,7 @@ export const deleteUser = async(req,res)=>{
             }
         )
     } catch (error) {
-        res.status(200).json(
+        res.status(400).json(
             {
                 message:'Delete failed', success:false
             }

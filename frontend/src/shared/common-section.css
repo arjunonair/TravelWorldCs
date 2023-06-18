@@ -3,7 +3,7 @@
 .common__section{
     background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
     url(../assets/images/tour.jpg);
-    
+
     height: 35vh;
     object-fit: cover;
     width: 100%;

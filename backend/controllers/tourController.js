@@ -49,7 +49,7 @@ export const deleteTour = async(req,res)=>{
         )
         
     } catch (error) {
-        res.status(200).json(
+        res.status(400).json(
             {
                 message:'Delete failed', success:false
             }
@@ -82,11 +82,12 @@ export const getAllTour = async(req,res)=>{
     const page = parseInt(req.query.page);
     console.log(page);
 
-    try {
+    try{
         const getTours = await Tour.find({}).populate("reviews").skip(page*8).limit(8);
         res.status(200).json({
             message: 'success', count: getTours.length, success:true,data:getTours
-        })    } 
+        })
+    } 
         catch (err) {
             res.status(404).json(
                 {
