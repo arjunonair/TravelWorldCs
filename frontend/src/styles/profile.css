@@ -1,14 +1,20 @@
 .student-profile{
   background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-  url(../assets/images/tour.jpg);
+  url(../assets/images/heroimg_2.jpg);
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  backdrop-filter: blur(5px);
 }
 .student-profile .card {
   border-radius: 10px;
 }
 
-.student-profile .card .card-header .profile_img {
-  width: 150px;
-  height: 150px;
+ .card .card-header .profile_img {
+  width: 250px;
+  height: 250px;
   object-fit: cover;
   margin: 10px auto;
   border: 10px solid #ccc;
@@ -30,4 +36,8 @@
     font-size: 14px;
     padding: 5px 10px;
     color: #000;
+}
+
+.card:hover{
+  transform: scale(1.03);
 }

@@ -6,38 +6,60 @@ import {useNavigate} from 'react-router-dom'
 import {authContext} from '../../context/authContext'
 
 import {BASE_URL} from '../../utils/config'
-
-//49/40/40/49
-
+//Fetch not changed markkaa l
 const Booking = ({tour, avgRating}) => {
 
     const {user} = useContext(authContext)
     const navigate = useNavigate();
-    const [credentials,setCredentials] = useState(
+
+    const {title, price, reviews} = tour
+
+    const [booking,setBooking] = useState(
       {
-        userId:'01', //dynamic in future
-        userEmail: 'user@gmail.com',
+        userId:user && user._id,
+        userEmail: user && user.email,
+        tourName: '',
         fullName:'',
         phone:'',
         guestSize:1,
         bookAt:''
       }
     )
-
-    const {price, reviews} = tour;
-
     const handleChange=(e)=>{
-      setCredentials(prev=>({...prev,[e.target.id]:e.target.value
-    }))
+      setBooking(prev=>({...prev,[e.target.id]:e.target.value,tourName:title
+    }));
     } 
 
     const serviceFee = 10;
-    const totalAmount = Number(price) * Number(credentials.guestSize) + Number(serviceFee)
+    const totalAmount = Number(price) * Number(booking.guestSize) + Number(serviceFee)
 
     //send data to the server
-    const handleClick= e=>{
+    const handleClick= async e=>{
       e.preventDefault()
-      console.log(credentials);
+      // setBooking({...booking,tourName:title})
+      console.log(booking );
+      try {
+        if(!user || user===undefined || user===null){
+          return alert('please sign in...')
+        }
+        const res = await fetch(`${BASE_URL}/booking`,{
+          method: 'post',
+          headers : {
+            'content-type' : 'application/json'
+          },
+          credentials:'include',
+          body : JSON.stringify(booking)
+        })
+        const result = await res.json()
+
+        if(!res.ok)
+        {
+          return alert(result.message)
+        }
+      } 
+      catch (err) {
+        return alert(err.message)
+      }
       navigate('/thank-you');
     }
 
@@ -57,10 +79,10 @@ const Booking = ({tour, avgRating}) => {
       <h5>Information</h5>
       <Form className='booking__info-form' onSubmit={handleClick}> 
       <FormGroup>
-        <input type='text' placeholder='Full Name' id='Full Name' required onChange={handleChange}/>
+        <input type='text' placeholder='Full Name' id='fullName' required onChange={handleChange}/>
       </FormGroup>
       <FormGroup>
-        <input type='number' inputMode='numeric' placeholder='Phone' id='Phone' required onChange={handleChange}/>
+        <input type='number' inputMode='numeric' placeholder='Phone' id='phone' required onChange={handleChange}/>
       </FormGroup>
       <FormGroup className='d-flex align-items-center gap-3'>
         <input type='date' placeholder='' id='bookAt' required onChange={handleChange}/>
@@ -82,7 +104,7 @@ const Booking = ({tour, avgRating}) => {
         </ListGroupItem>
         <ListGroupItem className='border-0 px-0 total'>
           <h5>Total </h5>
-          <span>Rs {totalAmount}</span>
+          <span>Rs {totalAmount}{title}</span>
         </ListGroupItem>
       </ListGroup>
 

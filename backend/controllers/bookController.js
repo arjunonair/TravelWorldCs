@@ -5,7 +5,6 @@ export const newBook = async(req,res)=>
     const newBooking = new Booking(req.body)
     try {
         const savedBooking = await newBooking.save()
-        
         res.status(200).json({ success: true , message: 'Booking success',data:savedBooking})
 
     } catch (err) {
@@ -15,9 +14,9 @@ export const newBook = async(req,res)=>
 
 export const getBooking = async(req, res)=>
 {
-    const id = req.params.id;
     try{
-    const book = await Booking.findById(id);
+    const userId = new RegExp(req.query.userId)
+    const book = await Booking.find({"userId": userId});
     res.status(200).json({ success: true , message: 'Booking data',data:book})
     }
     catch(err)

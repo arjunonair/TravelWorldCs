@@ -14,7 +14,7 @@ const TourCard = ({tour}) => {
       <Card>
         <div className='tour__img'>
            <img src = {photo} alt='tour-img' />
-           {featured && <span>Featured</span>} 
+           {featured && <span>Featured</span>}
         </div>
 
         <CardBody>

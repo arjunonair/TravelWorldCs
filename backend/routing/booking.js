@@ -4,8 +4,8 @@ import { getAllBooking, getBooking, newBook } from "../controllers/bookControlle
 import { verifyAdmin, verifyUser } from "../utils/verifyToken.js";
 const router = express.Router();
 
-router.post("/",verifyUser, newBook);
-router.get("/:id",verifyUser,getBooking);
-router.get("/",verifyAdmin,getAllBooking);
+router.post("/", newBook);
+router.get("/s",getBooking);
+router.get("/",getAllBooking);
 
 export default router;

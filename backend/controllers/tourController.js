@@ -5,7 +5,6 @@ import tours from '../routing/tours.js'
 export const createTour = async (req,res) =>
 {
     const newTour = new Tour(req.body);
-    
     try
     {
         const savedTour = await newTour.save();
@@ -56,7 +55,7 @@ export const deleteTour = async(req,res)=>{
         )
     }
 }
-//singletour
+//singleTour
 export const singleTour = async(req,res)=>{
     const id = req.params.id
     try {
@@ -102,7 +101,6 @@ export const getSearch = async(req,res)=>{
     const title = new RegExp(req.query.title);
     const distance = parseInt(req.query.distance);
     const maxGroupSize = parseInt(req.query.maxGroupSize);
-
     try {
         const tours = await Tour.find({title,distance : {$gte:distance}, maxGroupSize: {$gte: maxGroupSize}}).populate
         ("reviews");

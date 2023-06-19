@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import {BASE_URL} from '../utils/config'
-import '../styles/admin.css'
+import React, { useState, useEffect } from "react";
+import { BASE_URL } from "../utils/config";
+import "../styles/admin.css";
 
 const Admin = () => {
   const [tour, setTour] = useState([]);
-  const [tourName, setTourName] = useState('');
-  const [cityName, setCityName] = useState('');
-  const [addressName, setAddressName] = useState('');
-  const [distanceName, setDistanceName] = useState('');
-  const [price, setPrice] = useState('');
-  const [maxGroupSize, setMaxGroupSize] = useState('');
-  const [tourDesc, setTourDesc] = useState('');
-  const [featured, setFeatured] = useState('');
+  const [tourName, setTourName] = useState("");
+  const [cityName, setCityName] = useState("");
+  const [addressName, setAddressName] = useState("");
+  const [distanceName, setDistanceName] = useState("");
+  const [price, setPrice] = useState("");
+  const [maxGroupSize, setMaxGroupSize] = useState("");
+  const [tourDesc, setTourDesc] = useState("");
+  const [featured, setFeatured] = useState("");
 
   // Function to fetch the list of tours from the backend
   const fetchTours = async () => {
@@ -20,7 +20,7 @@ const Admin = () => {
       const data = await response.json();
       setTour(data);
     } catch (error) {
-      console.error('Error fetching tours:', error);
+      console.error("Error fetching tours:", error);
     }
   };
 
@@ -29,38 +29,38 @@ const Admin = () => {
     event.preventDefault();
     try {
       const response = await fetch(`${BASE_URL}/tours`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-        title: tourName,
-        city: cityName,
-        address:addressName,
-        distance: distanceName,
-        photo: "/tour-images/tour-img02.jpg",
-        desc: tourDesc,
-        price: price,
-        maxGroupSize: maxGroupSize,
-        featured: "true",
+          title: tourName,
+          city: cityName,
+          address: addressName,
+          distance: distanceName,
+          photo: "/tour-images/tour-img02.jpg",
+          desc: tourDesc,
+          price: price,
+          maxGroupSize: maxGroupSize,
+          featured: "true",
         }),
       });
 
       if (response.ok) {
         const newTour = await response.json();
         setTour([...tour, newTour]);
-        setTourName('');
-        setCityName('');
-        setAddressName('');
-        setDistanceName('');
-        setTourDesc('');
-        setPrice('');
-        setMaxGroupSize('');
-        setFeatured('');
+        setTourName("");
+        setCityName("");
+        setAddressName("");
+        setDistanceName("");
+        setTourDesc("");
+        setPrice("");
+        setMaxGroupSize("");
+        setFeatured("");
         // setTourDescription('');
       }
     } catch (error) {
-      console.error('Error adding tour:', error);
+      console.error("Error adding tour:", error);
     }
   };
 
@@ -106,59 +106,66 @@ const Admin = () => {
 
   return (
     <div>
-      <h1>ADMIN ONLY AREA 😎</h1>
-
-      <form onSubmit={handleAddTour}>
-        <input
-          type="text"
-          placeholder="Tour Name"
-          value={tourName}
-          onChange={(event) => setTourName(event.target.value)}
-        />
-
-        <input
-        type="text"
-        placeholder = "City Name"
-        value={cityName}
-        onChange={(event) => setCityName(event.target.value)}
-        />
-
-        <input
-        type="text"
-        value={addressName}
-        placeholder = "Address"
-        onChange={(event) => setAddressName(event.target.value)}
-        />
-
-        <input
-        type ="number"
-        placeholder = "Distance"
-        value={distanceName}
-        onChange={(event) => setDistanceName(event.target.value)}
-        />
-
-        <input
-          type="text"
-          placeholder="Tour Description"
-          value={tourDesc}
-          onChange={(event) => setTourDesc(event.target.value)}
-        />
-
-        <input
-        type="number"
-        placeholder='Enter the price'
-        value={price}
-        onChange={(event) => setPrice(event.target.value)}
-        />
-        <input
-        type="number"
-        placeholder="Enter the maxGroupSize"
-        value={maxGroupSize}
-        onChange ={(event)=> setMaxGroupSize(event.target.value)}
-        />
-        
-        <button type="submit">Add Tour</button>
-      </form>
+      <section class="get-in-touch">
+        <h1 class="title">Create Tour</h1>
+        <form class="contact-form row">
+          <div class="form-field col-lg-6">
+            <input id="name" class="input-text js-input" type="text" required />
+            <label class="label" for="name">
+              Name
+            </label>
+          </div>
+          <div class="form-field col-lg-6 ">
+            <input
+              id="tourName"
+              class="input-text js-input"
+              type="email"
+              value={tourName}
+              onsubmit={(event)=>setTour(event.target.value)}
+              required
+            />
+            <label class="label" for="email">
+              E-mail
+            </label>
+          </div>
+          <div class="form-field col-lg-6 ">
+            <input
+              id="company"
+              class="input-text js-input"
+              type="text"
+              required
+            />
+            <label class="label" for="company">
+              Company Name
+            </label>
+          </div>
+          <div class="form-field col-lg-6 ">
+            <input
+              id="phone"
+              class="input-text js-input"
+              type="text"
+              required
+            />
+            <label class="label" for="phone">
+              Contact Number
+            </label>
+          </div>
+          <div class="form-field col-lg-12">
+            <input
+              id="message"
+              class="input-text js-input"
+              type="text"
+              required
+            />
+            <label class="label" for="message">
+              Message
+            </label>
+          </div>
+          <div class="form-field col-lg-12">
+            <input class="submit-btn" type="submit" value="Submit" />
+          </div>
+        </form>
+      </section>
 
       {/* <ul>
         {tours.map((tour) => (

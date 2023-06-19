@@ -51,4 +51,30 @@ ul{
         top: 0;
         box-shadow:3px 3px 8px -3px rgb(196, 169, 169);
         z-index: 999; 
+        opacity: 2;
+}
+
+.btn_reg{
+    background-color: #000;
+    background-image: linear-gradient(125deg,#23c20e,#3c8dc7);
+    color: #fff;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 0.4rem 1.5rem !important;
+}
+.btn_reg {
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 0.4rem 1.5rem !important;
+}
+
+.btn_reg a {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn_reg :is(:focus, :hover){
+  outline-offset: 3px;
+  color: #fff;    
 }
