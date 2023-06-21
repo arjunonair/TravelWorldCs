@@ -8,6 +8,7 @@ import SearchBar from '../shared/SearchBar.jsx'
 import { Link } from 'react-router-dom'
 import useFetch from '../hooks/useFetch.js'
 import { BASE_URL } from '../utils/config.js'
+import Footer from '../components/footer/footer'
 
 import {Container, Row,Col, Button } from 'reactstrap'
 
@@ -73,6 +74,7 @@ const Tours = () => {
             </Link>
     </Button>
     <Newsletter/>
+    <Footer />
     </>
   )
 }

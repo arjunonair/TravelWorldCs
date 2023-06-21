@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom'
 import TourCard from '../shared/TourCard.jsx'
 // import NewsLetter from '../shared/NewsLetter.jsx'
 import Newsletter from '../shared/NewsLetter.jsx'
+import Footer from '../components/footer/footer'
 
 const SearchResult = () => {
 
@@ -31,6 +32,7 @@ const SearchResult = () => {
       </Container>
     </section>
     <Newsletter/>
+    <Footer />
   </>
 }
 

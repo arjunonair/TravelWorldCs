@@ -4,8 +4,8 @@ import {verifyUser} from '../utils/verifyToken.js'
 
 const router = express.Router();
 
-router.post('/',verifyUser,createCustom)
-router.put('/:id',verifyUser,updateCustom)
-router.get('/',verifyUser,getCustom)
+router.post('/',createCustom)
+router.put('/:id',updateCustom)
+router.get('/',getCustom)
 
 export default router

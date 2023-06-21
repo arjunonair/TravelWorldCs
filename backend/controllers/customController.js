@@ -28,7 +28,7 @@ export const updateCustom = async (req, res) =>{
 
 export const getCustom = async (req,res ) =>{
     try{
-        const customGet = await Custom.find()
+        const customGet = await Custom.find({})
         res.status(200).json({ success: true , message: 'Successfully fetched', data: customGet})
     }
     catch(err)

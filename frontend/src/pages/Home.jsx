@@ -14,6 +14,7 @@ import ImageGallery from '../components/image-gallery/imageGallery';
 import Review from '../components/Review-section/review';
 import Newsletter from '../shared/NewsLetter';
 import SupportEngine from '../services/supportengine';
+import Footer from '../components/footer/footer'
 
 
 const Home = () => {
@@ -154,6 +155,7 @@ const Home = () => {
         {/* Footer section */}
         <SupportEngine />
         <Newsletter />
+        <Footer />
 
   </>
 }

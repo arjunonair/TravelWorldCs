@@ -5,12 +5,14 @@ import { Container,Col, Row, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import '../styles/thank-you.css'
 import check from '../assets/images/checkmark.gif'
+import Footer from '../components/footer/footer'
+
 
 const ThankYou = () => {
     useEffect(()=>{
         window.scrollTo(0,0) 
        })
-  return (
+  return <>
     <section>
         <Container>
             <Row>
@@ -28,7 +30,8 @@ const ThankYou = () => {
             </Row>
         </Container>
     </section>
-  )
+    <Footer />
+    </>
 }
 
 export default ThankYou

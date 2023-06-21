@@ -1,207 +1,116 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
+import AdminPage from '../components/admin/AdminPage.jsx';
+import CustomPage from '../components/admin/CustomPage.jsx';
+import BookedToursTable from '../components/admin/BookedTourTable.jsx';
 import { BASE_URL } from "../utils/config";
-import "../styles/admin.css";
+import useFetch from '../hooks/useFetch.js';
 
-const Admin = () => {
-  const [tour, setTour] = useState([]);
-  const [tourName, setTourName] = useState("");
-  const [cityName, setCityName] = useState("");
-  const [addressName, setAddressName] = useState("");
-  const [distanceName, setDistanceName] = useState("");
-  const [price, setPrice] = useState("");
-  const [maxGroupSize, setMaxGroupSize] = useState("");
-  const [tourDesc, setTourDesc] = useState("");
-  const [featured, setFeatured] = useState("");
+const App = () => {
+  const {data:tourCount } = useFetch(`${BASE_URL}/tours/search/getTourCount`)
 
-  // Function to fetch the list of tours from the backend
-  const fetchTours = async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/tours`);
-      const data = await response.json();
-      setTour(data);
-    } catch (error) {
-      console.error("Error fetching tours:", error);
-    }
+  const [currentPage, setCurrentPage] = useState('Tours');
+
+  const handleMenuClick = (page) => {
+    setCurrentPage(page);
   };
-
-  // Function to handle form submission for adding a tour
-  const handleAddTour = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(`${BASE_URL}/tours`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: tourName,
-          city: cityName,
-          address: addressName,
-          distance: distanceName,
-          photo: "/tour-images/tour-img02.jpg",
-          desc: tourDesc,
-          price: price,
-          maxGroupSize: maxGroupSize,
-          featured: "true",
-        }),
-      });
-
-      if (response.ok) {
-        const newTour = await response.json();
-        setTour([...tour, newTour]);
-        setTourName("");
-        setCityName("");
-        setAddressName("");
-        setDistanceName("");
-        setTourDesc("");
-        setPrice("");
-        setMaxGroupSize("");
-        setFeatured("");
-        // setTourDescription('');
-      }
-    } catch (error) {
-      console.error("Error adding tour:", error);
-    }
-  };
-
-  // const handleDeleteTour = async (tourId) => {
-  //   try {
-  //     const response = await fetch(`${BASE_URL}/tours/${tourId}`, {
-  //       method: 'DELETE',
-  //     });
-
-  //     if (response.ok) {
-  //       const updatedTours = tours.filter((tour) => tour.id !== tourId);
-  //       setTours(updatedTours);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error deleting tour:', error);
-  //   }
-  // };
-
-  // const handleUpdateTour = async (tourId, updatedTour) => {
-  //   try {
-  //     const response = await fetch(`${BASE_URL}/tours/${tourId}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(updatedTour),
-  //     });
-
-  //     if (response.ok) {
-  //       const updatedTours = tours.map((tour) =>
-  //         tour.id === tourId ? updatedTour : tour
-  //       );
-  //       setTours(updatedTours);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error updating tour:', error);
-  //   }
-  // };
-
-  useEffect(() => {
-    fetchTours();
-  }, []);
 
   return (
-    <div>
-      <section class="get-in-touch">
-        <h1 class="title">Create Tour</h1>
-        <form class="contact-form row">
-          <div class="form-field col-lg-6">
-            <input id="name" class="input-text js-input" type="text" required />
-            <label class="label" for="name">
-              Name
-            </label>
-          </div>
-          <div class="form-field col-lg-6 ">
-            <input
-              id="tourName"
-              class="input-text js-input"
-              type="email"
-              value={tourName}
-              onsubmit={(event)=>setTour(event.target.value)}
-              required
-            />
-            <label class="label" for="email">
-              E-mail
-            </label>
-          </div>
-          <div class="form-field col-lg-6 ">
-            <input
-              id="company"
-              class="input-text js-input"
-              type="text"
-              required
-            />
-            <label class="label" for="company">
-              Company Name
-            </label>
-          </div>
-          <div class="form-field col-lg-6 ">
-            <input
-              id="phone"
-              class="input-text js-input"
-              type="text"
-              required
-            />
-            <label class="label" for="phone">
-              Contact Number
-            </label>
-          </div>
-          <div class="form-field col-lg-12">
-            <input
-              id="message"
-              class="input-text js-input"
-              type="text"
-              required
-            />
-            <label class="label" for="message">
-              Message
-            </label>
-          </div>
-          <div class="form-field col-lg-12">
-            <input class="submit-btn" type="submit" value="Submit" />
-          </div>
-        </form>
-      </section>
-
-      {/* <ul>
-        {tours.map((tour) => (
-          <li key={tour.id}>
-            <h3>{tour.name}</h3>
-            <p>{tour.description}</p>
-            <button onClick={() => handleDeleteTour(tour.id)}>Delete</button>
-
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                handleUpdateTour(tour.id, {
-                  name: event.target.name.value,
-                  description: event.target.description.value,
-                });
-              }}
-            >
-              <input
-                type="text"
-                placeholder="Tour Name"
-                defaultValue={tour.name}
-                name="name"
-              />
-              <input
-                type="text"
-                placeholder="Tour Description"
-                defaultValue={tour.description}
-                name="description"
-              />
-              <button type="submit">Update</button>
-            </form>
-          </li>
-        ))}
-      </ul> */}
+    <div style={containerStyle}>
+      <div style={topSectionStyle}>
+        <h1>Admin Dashboard</h1>
+      </div>
+      <div style={contentContainerStyle}>
+        <div style={menuStyle}>
+          <button
+            style={menuItemStyle(currentPage === 'Tours')}
+            onClick={() => handleMenuClick('Tours')}
+          >
+            Tours
+          </button>
+          <button
+            style={menuItemStyle(currentPage === 'Create')}
+            onClick={() => handleMenuClick('Create')}
+          >
+            Create
+          </button>
+          <button
+            style={menuItemStyle(currentPage === 'Booking')}
+            onClick={() => handleMenuClick('Booking')}
+          >
+            Booking
+          </button>
+          <button
+            style={menuItemStyle(currentPage === 'Users')}
+            onClick={() => handleMenuClick('Users')}
+          >
+            Users
+          </button>
+          <button
+            style={menuItemStyle(currentPage === 'Custom')}
+            onClick={() => handleMenuClick('Custom')}
+          >
+           Custom
+          </button>
+        </div>
+        <div style={contentStyle}>
+          {currentPage === 'Tours' && <BookedToursTable tourCount={tourCount}/>}
+          {currentPage === 'Create' && <AdminPage/>}
+          {currentPage === 'Booking' && <h1>Booking Page</h1>}
+          {currentPage === 'Users' && <h1>Users Page</h1>}
+          {currentPage === 'Custom' && <CustomPage />}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Admin;
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100vh',
+};
+
+const topSectionStyle = {
+  background: '#283945',
+  color: '#fff',
+  textAlign:'center',
+  border:'1px solid #00823C',
+  padding: '20px',
+};
+
+const contentContainerStyle = {
+  display: 'flex',
+  flex: '1',
+  background: '#fff'
+};
+
+const menuStyle = {
+  width: '300px',
+  background: '#283945',
+  padding: '10px',
+  borderRadius: '0px'
+};
+
+const menuItemStyle = (isActive) => ({
+  display: 'block',
+  width: '100%',
+  padding: '12px 16px',
+  border: 'none',
+  background: 'none',
+  textAlign: 'center',
+  borderRadius : '1px',
+  cursor: 'pointer',
+  outline: 'none',
+  color: isActive ? '283945' : '#666',
+  fontWeight: isActive ? 'bold' : 'normal',
+  transition: 'background-color 0.3s',
+  backgroundColor: isActive ? '#f1f1f1' : 'none',
+});
+
+const contentStyle = {
+  flex: '1',
+  padding: '10px'
+
+};
+
+export default App;

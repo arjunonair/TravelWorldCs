@@ -1,73 +1,34 @@
-
-.get-in-touch {
-  max-width: 800px;
-  margin: 50px auto;
-  position: relative;
+.create-tour-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
 }
 
-.get-in-touch .title {
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 3.2em;
-  line-height: 48px;
-  padding-bottom: 48px;
-    color: #00823C;
-    background: #283945;
-    background: -moz-linear-gradient(left,#283945 0%,#00823C 100%) !important;
-    background: -webkit-linear-gradient(left,#283945 0%,#00823C 100%) !important;
-    background: linear-gradient(to right,#283945 0%,#00823C  100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+.create-tour-card {
+  width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form .form-field {
-  position: relative;
-  margin: 32px 0;
+.create-tour-card .form-group {
+  margin-bottom: 20px;
 }
-.contact-form .input-text {
-  display: block;
+
+.create-tour-card label {
+  font-weight: bold;
+}
+
+.create-tour-card input[type="text"],
+.create-tour-card input[type="number"],
+.create-tour-card textarea {
   width: 100%;
-  height: 36px;
-  border-width: 0 0 2px 0;
-  border-color: #00823C;
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: 400;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-.contact-form .input-text:focus {
-  outline: none;
-}
-.contact-form .input-text:focus + .label,
-.contact-form .input-text.not-empty + .label {
-  -webkit-transform: translateY(-24px);
-          transform: translateY(-24px);
-}
-.contact-form .label {
-  position: absolute;
-  left: 20px;
-  bottom: 11px;
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: 400;
-  color: #00823C;
-  cursor: text;
-  transition: -webkit-transform .2s ease-in-out;
-  transition: transform .2s ease-in-out;
-  transition: transform .2s ease-in-out, 
-  -webkit-transform .2s ease-in-out;
-}
-.contact-form .submit-btn {
-  display: inline-block;
-  background-color: #000;
-  background-image: linear-gradient(125deg,#23c20e,#3c8dc7);
-  color: #fff;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 16px;
-  padding: 8px 16px;
-  border: none;
-  width:200px;
-  cursor: pointer;
+
+.create-tour-card .btn-primary {
+  width: 100%;
 }

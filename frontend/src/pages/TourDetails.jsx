@@ -8,6 +8,7 @@ import calculateAvgRating from "../utils/avgRating";
 import avatarImg from "../assets/images/avatar.jpg";
 import Booking from "../components/booking/booking";
 import Newsletter from "../shared/NewsLetter";
+import Footer from '../components/footer/footer'
 
 import useFetch from '../hooks/useFetch'
 import {BASE_URL} from '../utils/config'
@@ -202,6 +203,7 @@ const TourDetails = () => {
         </Container>
       </section>
       <Newsletter />
+      <Footer />
     </>
   );
 };

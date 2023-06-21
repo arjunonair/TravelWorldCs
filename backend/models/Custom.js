@@ -5,7 +5,7 @@ const customSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      unique: true,
+      unique: false,
     },
     city: {
       type: String,

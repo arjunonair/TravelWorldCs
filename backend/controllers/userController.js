@@ -70,7 +70,7 @@ export const singleUser = async(req,res)=>{
     }
 }
 //allUser
-export const getAllUser = async(req,res)=>{
+export const getUsers = async(req,res)=>{
     try {
         const getUsers = await User.find({});
         res.status(200).json(
@@ -143,5 +143,22 @@ export const getUserCount = async(req,res)=>{
             success: false,
             message: "Count failed",
         })
+    }
+}
+
+export const getAllUser = async(req,res)=>{
+    try {
+        const getUsers = await User.find({role:"admin"});
+        res.status(200).json(
+            {
+            message: 'success', count: getUsers.length, success:true,data:getUsers
+            }
+        )    } 
+        catch (err) {
+            res.status(404).json(
+                {
+                    message:'Fetch failed', success:false
+                }
+            )
     }
 }

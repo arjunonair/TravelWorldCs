@@ -5,6 +5,8 @@ import logo from "../../assets/images/logo3.png";
 import "./header.css";
 import { useRef, useEffect, useContext } from "react";
 import { authContext } from "../../context/authContext";
+import useFetch from '../../hooks/useFetch'
+import {BASE_URL} from '../../utils/config'
 
 const nav__links = [
   {
@@ -13,8 +15,8 @@ const nav__links = [
   },
 
   {
-    path: "/about",
-    display: "About",
+    path: "/customize",
+    display: "Custom",
   },
 
   {
@@ -43,6 +45,18 @@ const Header = () => {
     stickyHeader();
     return window.removeEventListener("scroll", stickyHeader);
   });
+
+  const {data:users} = useFetch(`${BASE_URL}/users`)
+  let id = ""
+  users?.map((users) => id = users._id)
+
+  let isAdmin=''
+  if(user&&user._id!==null){
+    if(user._id===id){
+      isAdmin='admin'
+    }
+  }
+
 
   return (
     <header className="header" ref={headerRef}>
@@ -83,7 +97,7 @@ const Header = () => {
                   user ? (
                   <>
                     <h5 className="mb-0">{user.username}</h5>
-                    <Button className="btn btn-dark" onClick = {logout}>
+                    <Button className="btn_reg" onClick = {logout}>
                       Logout
                     </Button>
                   </>
@@ -101,6 +115,10 @@ const Header = () => {
                     </Button>
                     </>
                 )}
+                {isAdmin && (<Button className="btn_reg ">
+                      <Link to="/admin">Admin panel</Link>
+                    </Button>)
+                }
               </div>
               {/* menu end */}
               <span class="Mobile_menu">
