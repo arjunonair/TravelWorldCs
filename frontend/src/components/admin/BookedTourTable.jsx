@@ -16,7 +16,7 @@ const BookedToursTable = ({ tourCount }) => {
   });
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
   const [tourToDelete, setTourToDelete] = useState(null);
-  const { data: tours, loading, error, refetchData } = useFetch(`${BASE_URL}/tours?page=${page}`);
+  const { data: tours, refetchData } = useFetch(`${BASE_URL}/tours?page=${page}`);
   console.log(tours);
 
   useEffect(() => {

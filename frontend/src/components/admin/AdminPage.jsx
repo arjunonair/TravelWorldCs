@@ -192,10 +192,6 @@ const AdminPage = () => {
 };
 
 // Inline styles
-const headingStyle = {
-  textAlign: 'center',
-  marginBottom: '20px',
-};
 
 const cardStyle = {
   background: '#f8f9fa',
