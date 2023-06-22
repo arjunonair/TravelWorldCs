@@ -29,6 +29,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.0.1",
     "mongoose": "^6.9.2",
+    "nodemailer": "^6.9.3",
     "nodemon": "^2.0.20",
     "tslib": "^2.5.0"
   }
