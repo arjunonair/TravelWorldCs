@@ -1,4 +1,4 @@
-
+/* eslint-disable react-hooks/exhaustive-deps */
 import {useState,useEffect} from 'react'
 
 const useFetch = (url) =>{
@@ -26,7 +26,7 @@ const useFetch = (url) =>{
         }
     }
     useEffect(()=>{
-        fetchData();
+        fetchData()
     },[url]);
 
     return {

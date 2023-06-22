@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { BASE_URL } from '../../utils/config';
 import useFetch from '../../hooks/useFetch';
@@ -11,8 +12,8 @@ const CustomPage = () => {
   const { data: custom, loading, error, fetchData } = useFetch(`${BASE_URL}/custom`);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData()
+  });
 
   useEffect(() => {
     if (custom) {
