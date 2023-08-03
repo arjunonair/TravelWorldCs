@@ -14,14 +14,14 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = expressAsyncHandler(async (req, res) => {
-  const { email, subject, message } = req.body;
-  console.log(email, subject, message);
+  const { email, subject, html } = req.body;
+  console.log(email, subject);
 
   const mailOptions = {
     from: process.env.SMTP_MAIL,
     to: email,
     subject: subject,
-    text: message,
+    html: html,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

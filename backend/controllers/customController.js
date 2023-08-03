@@ -36,3 +36,15 @@ export const getCustom = async (req,res ) =>{
         res.status(404).json({ success: false , message: 'Error get'})
     }
 }
+
+export const deleteCustom = async( req, res) =>{
+    const id =req.params.id
+    try{
+        const customDel = await Custom.findByIdAndDelete(id)
+        res.status(200).json({success : true, message: 'successfully deleted'})
+    }
+    catch(err)
+    {
+        res.status(500).json({success : true, message: 'error deletion'})
+    }
+}

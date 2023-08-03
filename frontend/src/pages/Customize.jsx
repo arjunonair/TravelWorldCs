@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import {BASE_URL} from '../utils/config';
 import CommonSection from '../shared/commonSection.jsx'
+import {authContext} from '../context/authContext'
 
 const AddCustomForm = () => {
+  const {user} = useContext(authContext);
   const [title, setTitle] = useState('');
   const [city, setCity] = useState('');
   const [address, setAddress] = useState('');
@@ -13,12 +15,14 @@ const AddCustomForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    const userEmail = user.email
+    console.log(userEmail)
     const customData = {
       title,
       city,
       address,
       distance,
+      userEmail,
       maxGroupSize,
       price,
       isApproved,
@@ -40,9 +44,9 @@ const AddCustomForm = () => {
         setTitle('');
         setCity('');
         setAddress('');
-        setDistance(0);
-        setMaxGroupSize(0);
-        setPrice(0);
+        setDistance('');
+        setMaxGroupSize('');
+        setPrice('');
         setIsApproved(false);
       } else {
         console.log('Error:', response.statusText);
@@ -54,7 +58,7 @@ const AddCustomForm = () => {
 
   const formContainerStyle = {
     maxWidth: '500px',
-    margin: '0 auto',
+    margin: '10px auto',
     padding: '20px',
     backgroundColor: '#f2f2f2',
     borderRadius: '4px',
@@ -95,7 +99,7 @@ const AddCustomForm = () => {
   return <>
     <CommonSection title={'Customize Your Tour'} />
     <div style={formContainerStyle}>
-      <h1>Add Custom Data</h1>
+      <h1>Add Custom TOUR</h1>
       <form onSubmit={handleSubmit}>
         <div style={formRowStyle}>
           <label htmlFor="title" style={labelStyle}>Title:</label>
@@ -133,7 +137,6 @@ const AddCustomForm = () => {
       </form>
     </div>
   </>
-  
 };
 
 export default AddCustomForm;

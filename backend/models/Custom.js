@@ -2,6 +2,14 @@ import mongoose from "mongoose";
 
 const customSchema = new mongoose.Schema(
   {
+    userId: {
+      type: String,
+    },
+    
+    userEmail: {
+      type: String,
+    },
+
     title: {
       type: String,
       required: true,
@@ -23,12 +31,12 @@ const customSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    price : {
-      type : Number
+    price: {
+      type: Number,
     },
-    isApproved : {
-        type : Boolean
-    }
+    isApproved: {
+      type: Boolean,
+    },
   },
   { timestamps: true }
 );

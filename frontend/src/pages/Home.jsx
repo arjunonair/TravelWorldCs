@@ -120,8 +120,8 @@ const Home = () => {
               </Col>
            </Row>
           </Container>
+          <SupportEngine />
         </section>
-
         {/* gallery section */}
         <section>
           <Container>
@@ -153,7 +153,6 @@ const Home = () => {
         </section>
 
         {/* Footer section */}
-        <SupportEngine />
         <Newsletter />
         <Footer />
 

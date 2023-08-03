@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { BASE_URL } from '../../utils/config';
 import useFetch from '../../hooks/useFetch';
+import { htmlCode } from './template';
+import { htmlNoCode } from './templateno';
 
 const CustomPage = () => {
+  
   const [customs, setCustoms] = useState([]);
   const [Price, setPrice] = useState('');
-  const [isApproved, setIsApproved] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const { data: custom, loading, error, fetchData } = useFetch(`${BASE_URL}/custom`);
@@ -21,9 +23,7 @@ const CustomPage = () => {
     }
   }, [custom, loading, error]);
 
-  console.log(customs);
-
-  const updateHandler = async (e, id) => {
+  const updateHandler = async (e, id, mail) => {
     e.preventDefault();
     try {
       const res = await fetch(`${BASE_URL}/custom/${id}`, {
@@ -33,21 +33,69 @@ const CustomPage = () => {
         },
         body: JSON.stringify({
           price: Price,
-          isApproved: isApproved,
         }),
       });
       if (res.ok) {
-        console.log(res);
         setShowSuccessMessage(true);
-        fetchData(); // Fetch updated custom data after successful update
+        fetchData();   
+        const emailRes = await fetch(`${BASE_URL}/email`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: mail,
+            subject: 'Tour Booking Confirmation',
+            html: htmlCode
+          }),
+        });
+        if (emailRes.ok) {
+          console.log('Email sent successfully!');
+        } else {
+          throw new Error('Failed to send email');
+        }
       } else {
         throw new Error('Failed to update tour');
-      }
+      } 
     } catch (error) {
       console.error('Error updating tour:', error);
     }
   };
-  
+
+  const deleteHandler = async(e,id,mail) =>{
+    console.log(id)
+    e.preventDefault()
+    await fetch(`http://localhost:4000/api/v1/custom/${id}`, {
+      method: 'DELETE',
+    }).then((response) => {
+        if (response.ok) {
+          console.log('Tour deleted successfully');
+          fetchData();
+          const emailRes = fetch(`${BASE_URL}/email`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: mail,
+              subject: 'Tour Booking Confirmation',
+              html: htmlCode
+            }),
+          });
+          if (emailRes.ok) {
+            console.log('Email sent successfully!');
+          } else {
+            throw new Error('Failed to send email');
+          }
+        } else {
+          console.error('Failed to delete tour');
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to delete tour:", error);
+      });
+  }
+
   const successMessageStyle = {
     backgroundColor: 'green',
     color: 'white',
@@ -83,10 +131,8 @@ const CustomPage = () => {
 
   const inputStyle = {
     width: '100px',
-  };
-
-  const setSelect = {
-    width: '100px',
+    padding: '3px',
+    borderRadius: '5px'
   };
 
   const buttonStyle = {
@@ -130,22 +176,20 @@ const CustomPage = () => {
                 />
               </td>
               <td style={cellStyle}>
-                <select style={setSelect} onChange={(e) => setIsApproved(e.target.value)}>
-                  <option value="">-- Select --</option>
-                  <option value="true">Yes</option>
-                  <option value="false">No</option>
-                </select>
-              </td>
-              <td style={cellStyle}>
-                <button type="submit" onClick={(e) => updateHandler(e, custom._id)} style={buttonStyle}>
-                  Update
+                <button type="submit" onClick={(e) => deleteHandler(e, custom._id,custom.userEmail)} style={buttonStyle}>
+                  Reject
                 </button>
               </td>
               <td style={cellStyle}>
+                <button type="submit" onClick={(e) => updateHandler(e, custom._id,custom.userEmail)} style={buttonStyle}>
+                  Approve
+                </button>
+              </td>
+              {/* <td style={cellStyle}>
                 <button type="submit" style={buttonStyle}>
                   Send
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>
