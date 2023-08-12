@@ -4,8 +4,14 @@ import CustomPage from '../components/admin/CustomPage.jsx';
 import BookedToursTable from '../components/admin/BookedTourTable.jsx';
 import { BASE_URL } from "../utils/config";
 import useFetch from '../hooks/useFetch.js';
+// import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+// import SupportAdmin from '../services/SupportAdmin/index.js';
+// import { Button } from 'reactstrap';
+import BookedPage from '../components/admin/BookedPage.jsx';
 
 const App = () => {
+  // const navigate = useNavigate();
   const {data:tourCount } = useFetch(`${BASE_URL}/tours/search/getTourCount`)
 
   const [currentPage, setCurrentPage] = useState('Tours');
@@ -51,11 +57,20 @@ const App = () => {
           >
            Custom
           </button>
+          <Link to={'/support'} style={{ textDecoration: 'none' }}>
+          <button
+            style={menuItemStyle(currentPage === 'Support')}
+            onClick={() => handleMenuClick('Support')}
+          >
+          Support
+          </button>
+          </Link>
         </div>
+
         <div style={contentStyle}>
           {currentPage === 'Tours' && <BookedToursTable tourCount={tourCount}/>}
           {currentPage === 'Create' && <AdminPage/>}
-          {currentPage === 'Booking' && <h1>Booking Page</h1>}
+          {currentPage === 'Booking' && <BookedPage />}
           {currentPage === 'Users' && <h1>Users Page</h1>}
           {currentPage === 'Custom' && <CustomPage />}
         </div>

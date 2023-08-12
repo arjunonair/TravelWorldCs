@@ -24,16 +24,15 @@ import {authContext} from '../context/authContext'
 
 const Routers = () =>{
   const {user} = useContext(authContext)
-  const {data:users} = useFetch(`${BASE_URL}/users`)
-  let id = ""
-  users?.map((users) => id = users._id)
 
-  let isAdmin=''
-  if(user&&user._id!==null){
-    if(user._id===id){
-      isAdmin='admin'
-    }
-  }
+  const {data:users} = useFetch(`${BASE_URL}/users`)
+
+  let isAdmin = user && users?.map((users) => {
+    if(user._id===users._id && users.role === 'admin')
+    return 'admin'
+    else
+    return ''
+  })
   return(
     <Routes>
         <Route path='/' element={<Navigate to='/home' />} />

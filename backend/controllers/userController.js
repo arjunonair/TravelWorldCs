@@ -72,12 +72,13 @@ export const singleUser = async(req,res)=>{
 //allUser
 export const getUsers = async(req,res)=>{
     try {
-        const getUsers = await User.find({});
+        const getUser = await User.find();
         res.status(200).json(
             {
-            message: 'success', count: getUsers.length, success:true,data:getUsers
+            message: 'success', success:true, data:getUser
             }
-        )    } 
+        )       
+    } 
         catch (err) {
             res.status(404).json(
                 {
@@ -88,7 +89,6 @@ export const getUsers = async(req,res)=>{
 }
 
 export const getSearch = async(req,res)=>{
-
     const title = new RegExp(req.query.title);
     const distance = parseInt(req.query.distance);
     const maxGroupSize = parseInt(req.query.maxGroupSize);
@@ -148,12 +148,13 @@ export const getUserCount = async(req,res)=>{
 
 export const getAllUser = async(req,res)=>{
     try {
-        const getUsers = await User.find({role:"admin"});
+        const getAllUsers = await User.find({role:"admin"});
         res.status(200).json(
             {
-            message: 'success', count: getUsers.length, success:true,data:getUsers
+            message: 'success', count: getUsers.length, success:true,data:getAllUsers
             }
-        )    } 
+        )    
+    } 
         catch (err) {
             res.status(404).json(
                 {

@@ -34,34 +34,71 @@ const Booking = ({tour, avgRating}) => {
     const totalAmount = Number(price) * Number(booking.guestSize) + Number(serviceFee)
 
     //send data to the server
-    const handleClick= async e=>{
+  const handleClick= async e=>{
       e.preventDefault()
       // setBooking({...booking,tourName:title})
-      console.log(booking );
+      console.log(booking);
       try {
         if(!user || user===undefined || user===null){
           return alert('please sign in...')
         }
-        const res = await fetch(`${BASE_URL}/booking`,{
-          method: 'post',
-          headers : {
-            'content-type' : 'application/json'
+        const options = {
+          key: "rzp_test_vc8XY2Q34138RT",
+          key_secret: "Wg893VmTA2VegApQqTzMZS9Z",
+          amount: totalAmount*100,
+          currency: 'INR',
+          order_id: booking._id,
+          name: 'Travel World',
+          description: 'Tour booking..',
+          handler: function (response) {
+            // Handle successful payment
+            console.log('Payment successful:', response);
+            // Complete the booking process on your server
+            completeBooking();
           },
-          credentials:'include',
-          body : JSON.stringify(booking)
-        })
-        const result = await res.json()
-
-        if(!res.ok)
-        {
-          return alert(result.message)
-        }
-      } 
-      catch (err) {
-        return alert(err.message)
+          prefill: {
+            name: user.username,
+            email: user.email,
+          },
+          notes: {
+            address: 'Razorpay Corporate office',
+          },
+          theme: {
+            color: '#3399cc',
+          },
+        };
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+      } catch (error) {
+        console.error('Error during payment:', error);
+        alert('An error occurred during payment.');
       }
-      navigate('/thank-you');
-    }
+    };
+  
+    const completeBooking = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/booking`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify(booking),
+        });
+  
+        if (!response.ok) {
+          const result = await response.json();
+          return alert(result.message);
+        }
+  
+        // Redirect to thank-you page on successful booking
+        navigate('/thank-you');
+      }
+      catch (error) {
+        console.error('Error booking:', error);
+        alert('An error occurred while booking.');
+      }
+};
 
   return <div className='booking'>
     <div className='booking__top d-flex align-items-center justify-content-between'>
@@ -74,6 +111,7 @@ const Booking = ({tour, avgRating}) => {
             </span>
         </span>
     </div>
+
     {/* booking form */}
     <div className='booking__form'>
       <h5>Information</h5>
@@ -104,13 +142,15 @@ const Booking = ({tour, avgRating}) => {
         </ListGroupItem>
         <ListGroupItem className='border-0 px-0 total'>
           <h5>Total </h5>
-          <span>Rs {totalAmount}{title}</span>
+          <span>Rs {totalAmount}</span>
         </ListGroupItem>
       </ListGroup>
-
       <Button className='btn primary__btn w-100 mt-4' onClick={handleClick}>Book Now!</Button>
     </div>
   </div>
 }
 
 export default Booking
+
+//Mastercard : 5267 3181 8797 5449
+//visa : 4111 1111 1111 1111

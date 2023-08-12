@@ -2,6 +2,7 @@ import Booking from "../models/Booking.js";
 
 export const newBook = async(req,res)=>
 {
+    
     const newBooking = new Booking(req.body)
     try {
         const savedBooking = await newBooking.save()
@@ -15,9 +16,9 @@ export const newBook = async(req,res)=>
 export const getBooking = async(req, res)=>
 {
     try{
-    const userId = new RegExp(req.query.userId)
+    const userId = new RegExp(req.query.userId);
     const book = await Booking.find({"userId": userId});
-    res.status(200).json({ success: true , message: 'Booking data',data:book})
+    res.status(200).json({ success: true , message: 'Booking data',data:book});
     }
     catch(err)
     {

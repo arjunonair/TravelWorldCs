@@ -121,15 +121,6 @@ const AddCustomForm = () => {
           <label htmlFor="maxGroupSize" style={labelStyle}>Max Group Size:</label>
           <input type="number" id="maxGroupSize" name="maxGroupSize" value={maxGroupSize} onChange={(event) => setMaxGroupSize(event.target.value)} required style={inputStyle} />
         </div>
-        <div style={formRowStyle}>
-          <label htmlFor="price" style={labelStyle}>Price:</label>
-          <input type="number" id="price" name="price" value={price} onChange={(event) => setPrice(event.target.value)} style={inputStyle} />
-        </div>
-        <div style={formRowStyle}>
-          <label htmlFor="isApproved" style={{ marginRight: '10px' }}>Is Approved:</label>
-          <input type="checkbox" id="isApproved" name="isApproved" checked={isApproved} onChange={(event) => setIsApproved(event.target.checked)} />
-          <label htmlFor="isApproved">Approved</label>
-        </div>
         <div style={buttonContainerStyle}>
           <button type="submit" style={buttonStyle}>Submit</button>
           <button type="reset" style={buttonStyle}>Reset</button>

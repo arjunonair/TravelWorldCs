@@ -78,3 +78,10 @@ ul{
   outline-offset: 3px;
   color: #fff;    
 }
+
+.profile__img{
+    margin-left: 55px;
+    width: 2.8rem;
+    border-radius: 100%;
+    border: 1px solid #23c20e;
+}

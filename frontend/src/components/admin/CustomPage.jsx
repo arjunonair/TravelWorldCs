@@ -78,8 +78,8 @@ const CustomPage = () => {
             },
             body: JSON.stringify({
               email: mail,
-              subject: 'Tour Booking Confirmation',
-              html: htmlCode
+              subject: 'Tour Booking Error',
+              html: htmlNoCode
             }),
           });
           if (emailRes.ok) {
@@ -156,8 +156,8 @@ const CustomPage = () => {
             <th style={headerCellStyle}>Distance</th>
             <th style={headerCellStyle}>Max Group Size</th>
             <th style={headerCellStyle}>Price</th>
-            <th style={headerCellStyle}>Is Approved</th>
-            <th style={headerCellStyle}>Action</th>
+            <th style={headerCellStyle}>Reject</th>
+            <th style={headerCellStyle}>Accept</th>
           </tr>
         </thead>
         <tbody>

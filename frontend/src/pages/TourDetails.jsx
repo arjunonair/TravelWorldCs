@@ -44,7 +44,7 @@ const TourDetails = () => {
 
   const options = { day: "numeric", month: "long", year: "numeric" };
 
-  const submitHandler = async e => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     const reviewText = reviewMsgRef.current.value;
 
@@ -68,8 +68,8 @@ const TourDetails = () => {
       })
 
     const result = await res.json()
-    if(!res.ok){ alert(result.message )}
-    alert(result.message)
+    if(!res.ok){ 
+      alert(result.message )}
     } catch (err) {
       alert(err.message)  
     }
@@ -160,6 +160,7 @@ const TourDetails = () => {
                       <button
                         className="btn primary__btn  text-white"
                         type="submit"
+                        onClick={submitHandler}
                       >
                         Submit
                       </button>

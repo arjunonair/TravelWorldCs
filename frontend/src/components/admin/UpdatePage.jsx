@@ -36,7 +36,7 @@ const UpdatePage = ({ tourId }) => {
     } catch (error) {
       console.error("Error fetching tour details:", error);
     }
-    
+      
   };
   const {data:tours} = useFetch(`${BASE_URL}/tours/${tourId}`)
 

@@ -3,16 +3,16 @@ import { createUser, deleteUser, getAllUser, singleUser, updateUser ,getUsers} f
 
 const router = express.Router();
 
-import { verifyUser } from "../utils/verifyToken.js";
+// import { verifyUser } from "../utils/verifyToken.js";
 
-router.put("/:id",verifyUser, updateUser);
+router.put("/:id", updateUser);
 
-router.delete("/:id",verifyUser, deleteUser);
+router.delete("/:id", deleteUser);
 
-router.get("/:id",verifyUser,singleUser);
+router.get("/:id",singleUser);
 
-router.get("/",getAllUser);
+// router.get("/",getAllUser); 
 
-router.get("/all",getUsers);
+router.get("/",getUsers);
 
 export default router;

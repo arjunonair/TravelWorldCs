@@ -7,6 +7,7 @@ import { useRef, useEffect, useContext } from "react";
 import { authContext } from "../../context/authContext";
 import useFetch from '../../hooks/useFetch'
 import {BASE_URL} from '../../utils/config'
+import userImg from '../../assets/images/user1.png'
 
 const nav__links = [
   {
@@ -47,15 +48,24 @@ const Header = () => {
   });
 
   const {data:users} = useFetch(`${BASE_URL}/users`)
-  let id = ""
-  users?.map((users) => id = users._id)
-
-  let isAdmin=''
-  if(user&&user._id!==null){
-    if(user._id===id){
-      isAdmin='admin'
-    }
-  }
+  // let id = ""
+  let isAdmin = ""
+  //  isAdmin = user && users?.map((users) => {
+  //   if(user._id===users._id & users.role ==='admin')
+  //   return 'admin'
+  //   else
+  //   return null
+  // })
+    let userData = {}
+   userData = user && users.find(item => item._id === user._id)
+  
+   isAdmin = userData!=null ? (userData.role === "admin" ? 'admin' : '') : ''
+  // let isAdmin=''
+  // if(user&&user._id!==null){
+  //   if(user._id===id){
+  //     isAdmin='admin'
+  //   }
+  // }
 
 
   return (
@@ -96,7 +106,11 @@ const Header = () => {
                 {
                   user ? (
                   <>
-                    <h5 className="mb-0">{user.username}</h5>
+                    <Link to="/profile">
+                    {/* <h5 className="mb-0 caps fs-4.5 text-uppercase text-black-50">{user.username}</h5> */}
+                    {userData && <img className="profile__img" src={userData.photo} alt="" /> }
+                    </Link>
+             
                     <Button className="btn_reg" onClick = {logout}>
                       Logout
                     </Button>
@@ -110,7 +124,7 @@ const Header = () => {
                     >
                       <Link to="/login">Login</Link>
                     </Button>
-                    <Button className="btn_reg ">
+                    <Button className="btn_reg">
                       <Link to="/register">Register</Link>
                     </Button>
                     </>

@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
+    phone: {
+      type: Number,
+      required: true,
+    },
+
     photo: {
       type: String,
     },
