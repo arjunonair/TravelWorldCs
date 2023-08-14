@@ -81,7 +81,8 @@ ul{
 
 .profile__img{
     margin-left: 55px;
-    width: 2.8rem;
+    width: 3rem;
+    height: 2.8rem;
     border-radius: 100%;
     border: 1px solid #23c20e;
 }

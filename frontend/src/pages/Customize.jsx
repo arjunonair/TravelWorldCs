@@ -1,22 +1,33 @@
-import React, { useState,useContext } from 'react';
-import {BASE_URL} from '../utils/config';
-import CommonSection from '../shared/commonSection.jsx'
-import {authContext} from '../context/authContext'
+import React, { useState, useContext,useRef } from 'react';
+import { BASE_URL } from '../utils/config';
+import CommonSection from '../shared/commonSection.jsx';
+import { authContext } from '../context/authContext';
+import '../styles/customize.css';
 
 const AddCustomForm = () => {
-  const {user} = useContext(authContext);
+
+  const formRef = useRef(null);
+  const { user } = useContext(authContext);
   const [title, setTitle] = useState('');
   const [city, setCity] = useState('');
   const [address, setAddress] = useState('');
-  const [distance, setDistance] = useState(0);
-  const [maxGroupSize, setMaxGroupSize] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [distance, setDistance] = useState('');
+  const [maxGroupSize, setMaxGroupSize] = useState('');
+  const [price, setPrice] = useState('');
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
   const [isApproved, setIsApproved] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const userEmail = user.email
-    console.log(userEmail)
+    const userEmail = user.email;
+    // Calculate distance
+    const startDate = new Date(fromDate);
+    const endDate = new Date(toDate);
+    const timeDifference = Math.abs(endDate - startDate);
+    setDistance(Math.ceil(timeDifference / (1000 * 60 * 60 * 24)));
+
     const customData = {
       title,
       city,
@@ -38,8 +49,8 @@ const AddCustomForm = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log('Custom data added:', data);
+        // Display success message
+        setSuccessMessage('Custom data added successfully!');
         // Reset form fields
         setTitle('');
         setCity('');
@@ -47,7 +58,13 @@ const AddCustomForm = () => {
         setDistance('');
         setMaxGroupSize('');
         setPrice('');
+        setFromDate('');
+        setToDate('');
         setIsApproved(false);
+        // Clear success message after a timeout
+        setTimeout(() => {
+          setSuccessMessage('');
+        }, 5000); // 5 seconds
       } else {
         console.log('Error:', response.statusText);
       }
@@ -56,78 +73,66 @@ const AddCustomForm = () => {
     }
   };
 
-  const formContainerStyle = {
-    maxWidth: '500px',
-    margin: '10px auto',
-    padding: '20px',
-    backgroundColor: '#f2f2f2',
-    borderRadius: '4px',
+  const handleReset = () => {
+    setTitle('');
+    setCity('');
+    setAddress('');
+    setDistance('');
+    setMaxGroupSize('');
+    setPrice('');
+    setFromDate('');
+    setToDate('');
+    setIsApproved(false);
   };
 
-  const formRowStyle = {
-    display: 'flex',
-    marginBottom: '15px',
-  };
-
-  const labelStyle = {
-    marginRight: '10px',
-    width: '100px',
-  };
-
-  const inputStyle = {
-    flex: '1',
-    padding: '5px',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-  };
-
-  const buttonContainerStyle = {
-    textAlign: 'center',
-    marginTop: '10px',
-  };
-
-  const buttonStyle = {
-    padding: '10px 20px',
-    backgroundColor: '#4caf50',
-    border: 'none',
-    color: '#fff',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    marginRight: '10px',
-  };
-
-  return <>
-    <CommonSection title={'Customize Your Tour'} />
-    <div style={formContainerStyle}>
-      <h1>Add Custom TOUR</h1>
-      <form onSubmit={handleSubmit}>
-        <div style={formRowStyle}>
-          <label htmlFor="title" style={labelStyle}>Title:</label>
-          <input type="text" id="title" name="title" value={title} onChange={(event) => setTitle(event.target.value)} required style={inputStyle} />
-        </div>
-        <div style={formRowStyle}>
-          <label htmlFor="city" style={labelStyle}>City:</label>
-          <input type="text" id="city" name="city" value={city} onChange={(event) => setCity(event.target.value)} style={inputStyle} />
-        </div>
-        <div style={formRowStyle}>
-          <label htmlFor="address" style={labelStyle}>Address:</label>
-          <input type="text" id="address" name="address" value={address} onChange={(event) => setAddress(event.target.value)} style={inputStyle} />
-        </div>
-        <div style={formRowStyle}>
-          <label htmlFor="distance" style={labelStyle}>Distance:</label>
-          <input type="number" id="distance" name="distance" value={distance} onChange={(event) => setDistance(event.target.value)} required style={inputStyle} />
-        </div>
-        <div style={formRowStyle}>
-          <label htmlFor="maxGroupSize" style={labelStyle}>Max Group Size:</label>
-          <input type="number" id="maxGroupSize" name="maxGroupSize" value={maxGroupSize} onChange={(event) => setMaxGroupSize(event.target.value)} required style={inputStyle} />
-        </div>
-        <div style={buttonContainerStyle}>
-          <button type="submit" style={buttonStyle}>Submit</button>
-          <button type="reset" style={buttonStyle}>Reset</button>
-        </div>
-      </form>
-    </div>
-  </>
+  return (
+    <>
+      <CommonSection title={'Customize Your Tour'} />
+      <div className="form-container">
+        <h1>Add Custom Tour</h1>
+        <div className='line'></div>
+        {successMessage && (
+          <p className="success-message">{successMessage}</p>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className="form-row">
+            <div className="form-column">
+              <label htmlFor="title" className="label">Title:</label>
+              <input type="text" id="title" name="title" value={title} onChange={(event) => setTitle(event.target.value)} required className="input" />
+            </div>
+            <div className="form-column">
+              <label htmlFor="city" className="label">City:</label>
+              <input type="text" id="city" name="city" value={city} onChange={(event) => setCity(event.target.value)} className="input" />
+            </div>
+          </div>
+          <div className="form-row">
+            <label htmlFor="address" className="label">Address:</label>
+            <input type="text" id="address" name="address" value={address} onChange={(event) => setAddress(event.target.value)} className="input" />
+          </div>
+          <div className="form-row">
+            <div className="form-column">
+              <label htmlFor="fromDate" className="label">From Date:</label>
+              <input type="date" id="fromDate" name="fromDate" value={fromDate} onChange={(event) => setFromDate(event.target.value)} required className="input" min={new Date().toISOString().split('T')[0]} />
+            </div>
+            <div className="form-column">
+              <label htmlFor="toDate" className="label">To Date:</label>
+              <input type="date" id="toDate" name="toDate" value={toDate} onChange={(event) => setToDate(event.target.value)} required className="input" min={new Date().toISOString().split('T')[0]} />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-column">
+              <label htmlFor="maxGroupSize" className="label">Max Group Size:</label>
+              <input type="number" id="maxGroupSize" name="maxGroupSize" value={maxGroupSize} onChange={(event) => setMaxGroupSize(event.target.value)} required className="input" />
+            </div>
+          </div>
+          <div className="button-container">
+            <button type="submit" className="button">Submit</button>
+            <button type="reset" className="reset-button" onClick={handleReset}>Reset</button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
 };
 
 export default AddCustomForm;

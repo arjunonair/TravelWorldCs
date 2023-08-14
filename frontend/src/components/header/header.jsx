@@ -7,7 +7,7 @@ import { useRef, useEffect, useContext } from "react";
 import { authContext } from "../../context/authContext";
 import useFetch from '../../hooks/useFetch'
 import {BASE_URL} from '../../utils/config'
-import userImg from '../../assets/images/user1.png'
+// import userImg from '../../assets/images/user1.png'
 
 const nav__links = [
   {
@@ -58,8 +58,9 @@ const Header = () => {
   // })
     let userData = {}
    userData = user && users.find(item => item._id === user._id)
-  
+
    isAdmin = userData!=null ? (userData.role === "admin" ? 'admin' : '') : ''
+
   // let isAdmin=''
   // if(user&&user._id!==null){
   //   if(user._id===id){
@@ -108,9 +109,8 @@ const Header = () => {
                   <>
                     <Link to="/profile">
                     {/* <h5 className="mb-0 caps fs-4.5 text-uppercase text-black-50">{user.username}</h5> */}
-                    {userData && <img className="profile__img" src={userData.photo} alt="" /> }
+                    {userData ? (<img className="profile__img" src={userData.photo} alt=" " /> ) : <h1>O</h1> }
                     </Link>
-             
                     <Button className="btn_reg" onClick = {logout}>
                       Logout
                     </Button>

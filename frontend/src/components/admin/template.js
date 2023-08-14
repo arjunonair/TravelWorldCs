@@ -1,4 +1,5 @@
-export const htmlCode = `<!DOCTYPE html>
+
+export const htmlCode = (Price) => `<!DOCTYPE html>
 <html>
 
 <head>
@@ -132,7 +133,8 @@ export const htmlCode = `<!DOCTYPE html>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Your Custom Tour have been Confirmed. Just press the button below to Pay.</p>
+                            <p style="margin: 0; font-size: 10px; font-weight:600;">Your Custom Tour have been Confirmed. Just press the button below to Pay.</p>
+                            <h4 style="margin: 0;">Rs : ${Price}</h4>
                         </td>
                     </tr>
                     <tr>
@@ -142,7 +144,7 @@ export const htmlCode = `<!DOCTYPE html>
                                     <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                         <table border="0" cellspacing="0" cellpadding="0">
                                             <tr>
-                                                <td align="center" style="border-radius: 3px;" bgcolor="#00823C"><a href="http://localhost:3000" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">PAY NOW !!</a></td>
+                                                <td align="center" style="border-radius: 3px;" bgcolor="#00823C"><a href="https://rzp.io/i/RBEpALt" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">PAY NOW !!</a></td>
                                             </tr>
                                         </table>
                                     </td>

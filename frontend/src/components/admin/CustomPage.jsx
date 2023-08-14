@@ -46,7 +46,7 @@ const CustomPage = () => {
           body: JSON.stringify({
             email: mail,
             subject: 'Tour Booking Confirmation',
-            html: htmlCode
+            html: htmlCode(Price)
           }),
         });
         if (emailRes.ok) {
@@ -63,7 +63,7 @@ const CustomPage = () => {
   };
 
   const deleteHandler = async(e,id,mail) =>{
-    console.log(id)
+    console.log(Price)
     e.preventDefault()
     await fetch(`http://localhost:4000/api/v1/custom/${id}`, {
       method: 'DELETE',

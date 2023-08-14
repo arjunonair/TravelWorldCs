@@ -57,6 +57,11 @@
     cursor: pointer;
 }
 
+.rating__group span:hover{
+    color: var(--primary-color);
+
+} 
+
 .tour__reviews h4{
     margin-bottom: 3rem;
 }
@@ -116,6 +121,7 @@
     font-size: 1.2rem;
     color: var(--secondary-color);
 }
+
 
 .review__item span{
     font-weight: 500;

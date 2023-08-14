@@ -74,7 +74,6 @@ const ProfilePage = () => {
             </div>
 
               <div className="card-header bg-transparent text-center">
-                
                 {userDetail && <img className="profile_img" src={userDetail.photo} alt="" />} 
                 {user ? <h3>{user.username}</h3> : <h3>undefined</h3>}
               </div>  

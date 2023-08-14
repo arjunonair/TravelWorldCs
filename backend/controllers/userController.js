@@ -12,7 +12,6 @@ export const createUser = async (req,res) =>
         res.status(400).json({ success: false , message: 'Creation failed'});
     }
 };
-
 //update
 export const updateUser = async(req,res)=>{
     const id = req.params.id
@@ -25,7 +24,7 @@ export const updateUser = async(req,res)=>{
                 message:'Updated Successfully', success:true, data: updatedUser,
             }
         )
-    } catch (error) {
+    }catch (error) {
         res.status(400).json(
             {
                 message:'Update failed', success:false
@@ -33,6 +32,7 @@ export const updateUser = async(req,res)=>{
         )
     }
 }
+
 //delete
 export const deleteUser = async(req,res)=>{
     const id = req.params.id

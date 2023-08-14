@@ -4,6 +4,7 @@ import './booking.css'
 import {Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import {useNavigate} from 'react-router-dom'
 import {authContext} from '../../context/authContext'
+import { htmlCode } from '../admin/template.js';
 
 import {BASE_URL} from '../../utils/config'
 //Fetch not changed markkaa l
@@ -25,11 +26,17 @@ const Booking = ({tour, avgRating}) => {
         bookAt:''
       }
     )
-    const handleChange=(e)=>{
+    const handleChange=(e)=>{      
+      const input = e.target;
+      let value = input.value;
+    
+      if (value.length > 10) {
+        value = value.slice(0, 10);
+        input.value = value;
+      }
       setBooking(prev=>({...prev,[e.target.id]:e.target.value,tourName:title
     }));
-    } 
-
+    }
     const serviceFee = 10;
     const totalAmount = Number(price) * Number(booking.guestSize) + Number(serviceFee)
 
@@ -92,6 +99,7 @@ const Booking = ({tour, avgRating}) => {
         }
   
         // Redirect to thank-you page on successful booking
+        emailSend()
         navigate('/thank-you');
       }
       catch (error) {
@@ -99,6 +107,26 @@ const Booking = ({tour, avgRating}) => {
         alert('An error occurred while booking.');
       }
 };
+
+  const emailSend = async()=>
+  {
+    const emailRes = fetch(`${BASE_URL}/email`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: user.email,
+        subject: 'Tour Booking Error',
+        html: htmlCode
+      }),
+    });
+    if (emailRes.ok) {
+      console.log('Email sent successfully!');
+    } else {
+      throw new Error('Failed to send email');
+    }
+  }
 
   return <div className='booking'>
     <div className='booking__top d-flex align-items-center justify-content-between'>
@@ -115,16 +143,26 @@ const Booking = ({tour, avgRating}) => {
     {/* booking form */}
     <div className='booking__form'>
       <h5>Information</h5>
-      <Form className='booking__info-form' onSubmit={handleClick}> 
+      <Form className='booking__info-form' onSubmit={handleClick}>
+
       <FormGroup>
         <input type='text' placeholder='Full Name' id='fullName' required onChange={handleChange}/>
       </FormGroup>
+
       <FormGroup>
-        <input type='number' inputMode='numeric' placeholder='Phone' id='phone' required onChange={handleChange}/>
+        <input type='number' inputMode='numeric' placeholder='Phone' id='phone'  required  maxLength='10' onChange={handleChange} className='no-spinner'/>
       </FormGroup>
+
       <FormGroup className='d-flex align-items-center gap-3'>
-        <input type='date' placeholder='' id='bookAt' required onChange={handleChange}/>
-        <input type='number' placeholder='Guest' id='guestSize' required onChange={handleChange}/>
+      <input
+        type='date'
+        placeholder=''
+        id='bookAt'
+        required
+        onChange={handleChange}
+        min={new Date().toISOString().split('T')[0]}
+      />
+        <input type='number' placeholder='Guest' id='guestSize' required onChange={handleChange} className='no-spinner'/>
       </FormGroup>
       </Form>
     </div>
@@ -136,14 +174,17 @@ const Booking = ({tour, avgRating}) => {
           <h5>Rs{price}<i className='ri-close-line'></i> 1 person</h5>
           <span>Rs {price}</span>
         </ListGroupItem>
+
         <ListGroupItem className='border-0 px-0'>
           <h5>Service Charge</h5>
           <span>Rs {serviceFee} </span>
         </ListGroupItem>
+
         <ListGroupItem className='border-0 px-0 total'>
           <h5>Total </h5>
           <span>Rs {totalAmount}</span>
         </ListGroupItem>
+
       </ListGroup>
       <Button className='btn primary__btn w-100 mt-4' onClick={handleClick}>Book Now!</Button>
     </div>

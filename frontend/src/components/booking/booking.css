@@ -44,6 +44,7 @@
 }
 
 .booking__form input{
+    appearance: textfield;
     width: 100%;
     padding: 0.5rem;
     border-radius: .5rem;
@@ -55,6 +56,7 @@
 
 .booking__form input:focus{
     outline: none;
+    appearance: textfield;
 }
 
 .booking__info-form{
@@ -82,4 +84,10 @@
     color: var(--heading-color) !important;
     font-weight: 700 !important;
     font-size: 1.1rem !important;
+}
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }

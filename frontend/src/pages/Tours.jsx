@@ -1,6 +1,5 @@
 import React ,{useState, useEffect} from 'react'
 import CommonSection from '../shared/commonSection.jsx'
-
 import '../styles/tours.css'
 import Newsletter from '../shared/NewsLetter.jsx'
 import TourCard from '../shared/TourCard.jsx'
@@ -13,7 +12,6 @@ import Footer from '../components/footer/footer'
 import {Container, Row,Col, Button } from 'reactstrap'
 
 const Tours = () => {
-
 
   const [pageCount, setPageCount] = useState(0)
   const [page,setPage] = useState(0)
@@ -44,7 +42,6 @@ const Tours = () => {
           {/* {loading && <h4 className='text-center pt-5'>Loading.....</h4>}
           {error && <h4 className='text-center pt-5'>{error}</h4>} */}
         {
-          // !loading && !error && 
 (          <Row>
           {
             tourData?.map(tour=>(
@@ -68,11 +65,6 @@ const Tours = () => {
         }
       </Container>
     </section>
-    <Button className='btn primary__btn custom'>
-            <Link to='/customizable'>
-              Customize your Tour
-            </Link>
-    </Button>
     <Newsletter/>
     <Footer />
     </>
