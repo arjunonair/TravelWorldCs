@@ -9,6 +9,7 @@ import { Link} from 'react-router-dom';
 // import SupportAdmin from '../services/SupportAdmin/index.js';
 // import { Button } from 'reactstrap';
 import BookedPage from '../components/admin/BookedPage.jsx';
+import UserPage from '../components/admin/UserPage.jsx';
 
 const App = () => {
   // const navigate = useNavigate();
@@ -71,7 +72,7 @@ const App = () => {
           {currentPage === 'Tours' && <BookedToursTable tourCount={tourCount}/>}
           {currentPage === 'Create' && <AdminPage/>}
           {currentPage === 'Booking' && <BookedPage />}
-          {currentPage === 'Users' && <h1>Users Page</h1>}
+          {currentPage === 'Users' && <UserPage />}
           {currentPage === 'Custom' && <CustomPage />}
         </div>
       </div>

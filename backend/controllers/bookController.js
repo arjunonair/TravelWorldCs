@@ -44,3 +44,24 @@ export const getAllBooking = async(req, res)=>
             )
     }
 }
+
+export const deleteBooking = async(req, res) =>
+{
+    const id = req.params.id
+    try {
+        const deletedBook = await Booking.findByIdAndDelete(id);
+        res.status(200).json(
+            {
+                message:'Deleted Successfully', success:true, data: deletedBook
+            }
+        )
+        
+    }catch(err)
+    {
+        res.status(404).json(
+            {
+                message:"Failed to delete" ,success:false
+            }
+        )
+    }   
+}

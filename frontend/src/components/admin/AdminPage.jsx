@@ -40,7 +40,6 @@ const AdminPage = () => {
           city: cityName,
           address: addressName,
           days: daysName,
-          photo: "/tour-images/tour-img02.jpg",
           desc: tourDesc,
           price: price,
           maxGroupSize: maxGroupSize,
@@ -71,6 +70,7 @@ const AdminPage = () => {
     setPrice("");
     setMaxGroupSize("");
     setFeatured("");
+    setShowSuccessMessage("")
   };
 
 
@@ -184,6 +184,9 @@ const AdminPage = () => {
               <button type="submit" style={buttonStyle}>
                 Add Tour
               </button>
+              <button type="reset" style={buttonStyle} onClick={resetForm}>
+                Reset
+              </button>
             </div>
           </form>
           
@@ -251,7 +254,6 @@ const buttonStyle = {
   border: 'none',
   borderRadius: '4px',
   cursor: 'pointer',
-  marginLeft: 'auto',
 };
 
 const successMessageStyle = {

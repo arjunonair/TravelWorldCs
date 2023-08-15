@@ -54,6 +54,15 @@ const CustomPage = () => {
         } else {
           throw new Error('Failed to send email');
         }
+        await fetch(`http://localhost:4000/api/v1/custom/${id}`, {
+      method: 'DELETE',
+    }).then((response) => {
+        if (response.ok){
+          console.log('Tour deleted successfully');
+        }else{
+          alert("Error deleting tour");
+        }
+      })
       } else {
         throw new Error('Failed to update tour');
       } 
@@ -150,10 +159,10 @@ const CustomPage = () => {
       <table style={tableStyle}>
         <thead>
           <tr>
-            <th style={headerCellStyle}>Title</th>
+            <th style={headerCellStyle}>Destination</th>
             <th style={headerCellStyle}>City</th>
-            <th style={headerCellStyle}>Address</th>
-            <th style={headerCellStyle}>Distance</th>
+            <th style={headerCellStyle}>Description</th>
+            <th style={headerCellStyle}>Days</th>
             <th style={headerCellStyle}>Max Group Size</th>
             <th style={headerCellStyle}>Price</th>
             <th style={headerCellStyle}>Reject</th>

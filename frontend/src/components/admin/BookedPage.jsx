@@ -11,6 +11,7 @@ const BookedPage = () => {
     title: "",
     days: "",
     price: "",
+    bookAt: "",
     maxGroupSize: "",
   });
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
@@ -29,13 +30,13 @@ const BookedPage = () => {
   };
 
   const handleConfirmDelete = () => {
+    console.log(bookingToDelete._id)
     fetch(`${BASE_URL}/booking/${bookingToDelete._id}`, {
       method: "DELETE",
     })
       .then((response) => {
         if (response.ok) {
           console.log('Booking deleted successfully');
-          refetchData();
           window.location.reload();
         } else {
           console.error('Failed to delete Booking');
@@ -70,8 +71,9 @@ const BookedPage = () => {
             <th style={headerCellStyle}>Full Name</th>
             <th style={headerCellStyle}>Phone</th>
             <th style={headerCellStyle}>Booking Name</th>
+            <th style={headerCellStyle}>Booked For</th>
             <th style={headerCellStyle}>Group Size</th>
-            <th style={headerCellStyle}>Update OR Delete</th>
+            <th style={headerCellStyle}>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -80,14 +82,9 @@ const BookedPage = () => {
               <td style={cellStyle}>{Booking.fullName}</td>
               <td style={cellStyle}>{Booking.phone}</td>
               <td style={cellStyle}>{Booking.tourName}</td>
+              <td style={cellStyle}>{new Date(Booking.bookAt).toLocaleDateString()}</td>
               <td style={cellStyle}>{Booking.guestSize}</td>
               <td style={cellStyle}>
-                <button
-                  style={updateButtonStyle}
-                  onClick={() => handleUpdateClick(Booking)}
-                >
-                  Update
-                </button>
                 <button
                   style={deleteButtonStyle}
                   onClick={() => handleDeleteClick(Booking)}

@@ -94,7 +94,7 @@ const Booking = ({tour, avgRating}) => {
   }
 }
   
-    const completeBooking = async () => {
+  const completeBooking = async () => {
       try {
         const response = await fetch(`${BASE_URL}/booking`, {
           method: 'POST',
@@ -109,9 +109,7 @@ const Booking = ({tour, avgRating}) => {
           const result = await response.json();
           return alert(result.message);
         }
-  
         // Redirect to thank-you page on successful booking
-        emailSend()
         navigate('/thank-you');
       }
       catch (error) {
@@ -119,26 +117,6 @@ const Booking = ({tour, avgRating}) => {
         alert('An error occurred while booking.');
       }
 };
-
-  const emailSend = async()=>
-  {
-    const emailRes = fetch(`${BASE_URL}/email`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: user.email,
-        subject: 'Tour Booking Error',
-        html: htmlCode
-      }),
-    });
-    if (emailRes.ok) {
-      console.log('Email sent successfully!');
-    } else {
-      throw new Error('Failed to send email');
-    }
-  }
 
   return <div className='booking'>
     <div className='booking__top d-flex align-items-center justify-content-between'>
@@ -174,7 +152,7 @@ const Booking = ({tour, avgRating}) => {
         onChange={handleChange}
         min={new Date().toISOString().split('T')[0]}
       />
-        <input type='number' placeholder='Guest' id='guestSize' required onChange={handleChange} className='no-spinner'
+        <input type='number' placeholder='Group Size' id='guestSize' required onChange={handleChange} className='no-spinner'
         onFocus={(e) => e.target.addEventListener("wheel", function (e) { e.preventDefault() }, { passive: false })}/>
       </FormGroup>
       </Form>

@@ -104,7 +104,7 @@ const AddCustomForm = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="form-column">
-              <label htmlFor="title" className="label">Title:</label>
+              <label htmlFor="title" className="label">Destination :</label>
               <input type="text" id="title" name="title" value={title} onChange={(event) => setTitle(event.target.value)} required className="input" />
             </div>
             <div className="form-column">
@@ -113,7 +113,7 @@ const AddCustomForm = () => {
             </div>
           </div>
           <div className="form-row">
-            <label htmlFor="address" className="label">Address:</label>
+            <label htmlFor="address" className="label">Describe Your Need : </label>
             <input type="text" id="address" name="address" value={address} onChange={(event) => setAddress(event.target.value)} className="input" />
           </div>
           <div className="form-row">

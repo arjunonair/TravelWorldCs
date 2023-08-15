@@ -11,6 +11,7 @@ import reviewRouter from './routing/review.js'
 import bookingRouter from './routing/booking.js'
 import customRouter from './routing/customs.js'
 import mailRouter from './routing/mail.js'
+import smsRouter from './routing/sms.js'
 
 dotenv.config()
 const app = express()
@@ -52,6 +53,7 @@ app.use("/api/v1/review",reviewRouter);
 app.use("/api/v1/booking",bookingRouter);
 app.use("/api/v1/custom",customRouter);
 app.use("/api/v1/email",mailRouter);
+app.use("/api/v1/sms",smsRouter);
 
 app.listen(port, ()=>
 {
