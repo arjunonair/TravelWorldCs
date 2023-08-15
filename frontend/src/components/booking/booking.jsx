@@ -27,24 +27,34 @@ const Booking = ({tour, avgRating}) => {
       }
     )
     const handleChange=(e)=>{      
-      const input = e.target;
-      let value = input.value;
+      // const input = e.target;
+      // let value = input.value;
     
-      if (value.length > 10) {
-        value = value.slice(0, 10);
-        input.value = value;
-      }
+      // if (value.length > 10) {
+      //   value = value.slice(0, 10);
+      //   input.value = value;
+      // }
       setBooking(prev=>({...prev,[e.target.id]:e.target.value,tourName:title
     }));
     }
-    const serviceFee = 10;
+    const serviceFee =  (Number(price) * Number(booking.guestSize))/20;
     const totalAmount = Number(price) * Number(booking.guestSize) + Number(serviceFee)
 
     //send data to the server
   const handleClick= async e=>{
       e.preventDefault()
       // setBooking({...booking,tourName:title})
-      console.log(booking);
+      if(booking.phone.length<10 ||!/^\d+$/.test(booking.phone))
+      {
+        alert('Mobile number should be 10 digits and contains only Number')
+      }
+      else{
+      if(booking.fullName==='' || booking.bookAt==='' ||booking.guestSize==='')
+      {
+        alert('Please fill all fields')
+        // window.location.reload()
+      }
+      else{
       try {
         if(!user || user===undefined || user===null){
           return alert('please sign in...')
@@ -81,6 +91,8 @@ const Booking = ({tour, avgRating}) => {
         alert('An error occurred during payment.');
       }
     };
+  }
+}
   
     const completeBooking = async () => {
       try {
@@ -150,7 +162,7 @@ const Booking = ({tour, avgRating}) => {
       </FormGroup>
 
       <FormGroup>
-        <input type='number' inputMode='numeric' placeholder='Phone' id='phone'  required  maxLength='10' onChange={handleChange} className='no-spinner'/>
+        <input type='tel' inputMode='numeric' placeholder='Phone' id='phone' pattern="[0-9]{10}" required  maxLength='10' minLength='10' onChange={handleChange} className='no-spinner'/>
       </FormGroup>
 
       <FormGroup className='d-flex align-items-center gap-3'>
@@ -162,7 +174,8 @@ const Booking = ({tour, avgRating}) => {
         onChange={handleChange}
         min={new Date().toISOString().split('T')[0]}
       />
-        <input type='number' placeholder='Guest' id='guestSize' required onChange={handleChange} className='no-spinner'/>
+        <input type='number' placeholder='Guest' id='guestSize' required onChange={handleChange} className='no-spinner'
+        onFocus={(e) => e.target.addEventListener("wheel", function (e) { e.preventDefault() }, { passive: false })}/>
       </FormGroup>
       </Form>
     </div>

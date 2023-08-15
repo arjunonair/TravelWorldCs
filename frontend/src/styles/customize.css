@@ -1,150 +1,141 @@
 
-    .form-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+.custom__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom__img {
+  flex: 1.1;
+  padding: 20px;
+}
+
+.custom__img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.form-container {
+  flex: 2;
+  padding: 20px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--primary-color);
+  font-family: 'Arial', sans-serif;
+}
+
+.form-header .line {
+  height: 2px;
+  background-color: var(--primary-color);
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-column {
+  flex: 1;
+}
+
+.form-column label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: var(--primary-color);
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.button,
+.reset-button {
+  padding: 12px 24px;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button {
+  background-color: var(--primary-color);
+  margin: 0 10px;
+}
+
+.reset-button {
+  background-color: #ccc;
+  margin: 0 10px;
+}
+
+.button:hover,
+.reset-button:hover {
+  background-color: #287bbc;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.success-message {
+  color: #2ecc71;
+  background-color: #e9f7e1;
+}
+
+.error-message {
+  color: #e74c3c;
+}
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    max-width: 90%;
   }
 
-  .form-container h1 {
-    font-size: 40px;
-    margin-bottom: 30px;
-    font-weight: 600;
-    color: #333;
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-  }
-
-  .line{
-    height: 2px;
-    background-color: black;
-    width: 100%;
-    margin-bottom: 20px;
-    margin-top: -10px;
-  }
-  /* Form row styles */
   .form-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  .form-column{
-    margin-left: 20px;
-  }
-  .form-column label{
-    font-size: 1.1rem;
+    flex-direction: column;
   }
 
-  #title{
-    width: 250px;
-    margin-left: 10px;
-  }
-  #city{
-    width: 250px;
-    margin-left: 10px;
-  }
-  #fromDate{
-    width: 250px;
-    margin-left: 10px;
-  }
-  #toDate{
-    width: 250px;
-    margin-left: 10px;
-  }
-  #address{
-    width: 450px;
-    height: 80px;
-    margin-left: 10px;
-  }
-  #maxGroupSize{
-    width: 450px;
-    height: 80px;
-    margin-left: 10px;
-  }
-  
-  /* Label styles */
-  .label {
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 16px;
-  }
-  
-  /* Input styles */
-  .input {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-  }
-  
-  /* Button container styles */
-  .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-  }
-  
-  /* Button styles */
   .button,
   .reset-button {
-    padding: 12px 24px;
-    border: none;
-    color: #fff;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
+    margin: 10px 0;
   }
-  
-  .button {
-    background-color: #4caf50;
-    margin-right: 15px;
-  }
-  
-  .reset-button {
-    background-color: #ccc;
-    margin-right: 15px;
-  }
-  
-  .button:hover,
-  .reset-button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Success message styles */
-  .success-message {
-    color: green;
-    background-color: #e9f7e1;
-    padding: 10px;
-    border-radius: 6px;
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  /* Error message styles */
-  .error-message {
-    color: red;
-  }
-  
-  /* Form responsiveness */
-  @media screen and (max-width: 768px) {
-    .form-container {
-      max-width: 90%;
-    }
-    
-    /* Adjust button container alignment */
-    .button-container {
-      flex-direction: column;
-    }
-    
-    /* Adjust button margin */
-    .button,
-    .reset-button {
-      margin: 10px 0;
-    }
-  }
-  
+}

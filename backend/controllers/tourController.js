@@ -99,10 +99,10 @@ export const getAllTour = async(req,res)=>{
 export const getSearch = async(req,res)=>{
 
     const title = new RegExp(req.query.title);
-    const distance = parseInt(req.query.distance);
+    const days = parseInt(req.query.days);
     const maxGroupSize = parseInt(req.query.maxGroupSize);
     try {
-        const tours = await Tour.find({title,distance : {$gte:distance}, maxGroupSize: {$gte: maxGroupSize}}).populate
+        const tours = await Tour.find({title,days : {$gte:days}, maxGroupSize: {$gte: maxGroupSize}}).populate
         ("reviews");
         res.status(200).json({
             message: 'success', success:true, data:tours,

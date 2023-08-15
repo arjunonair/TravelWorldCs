@@ -6,7 +6,7 @@ const AdminPage = () => {
   const [tourName, setTourName] = useState('');
   const [cityName, setCityName] = useState('');
   const [addressName, setAddressName] = useState('');
-  const [distanceName, setDistanceName] = useState('');
+  const [daysName, setdaysName] = useState('');
   const [price, setPrice] = useState('');
   const [maxGroupSize, setMaxGroupSize] = useState('');
   const [tourDesc, setTourDesc] = useState('');
@@ -39,7 +39,7 @@ const AdminPage = () => {
           title: tourName,
           city: cityName,
           address: addressName,
-          distance: distanceName,
+          days: daysName,
           photo: "/tour-images/tour-img02.jpg",
           desc: tourDesc,
           price: price,
@@ -52,6 +52,7 @@ const AdminPage = () => {
         setShowSuccessMessage(true);
         const newTour = await response.json();
         setTours([...tours, newTour]);
+        window.location.reload();
         resetForm();
       } else {
         throw new Error("Failed to add tour");
@@ -65,7 +66,7 @@ const AdminPage = () => {
     setTourName("");
     setCityName("");
     setAddressName("");
-    setDistanceName("");
+    setdaysName("");
     setTourDesc("");
     setPrice("");
     setMaxGroupSize("");
@@ -78,6 +79,11 @@ const AdminPage = () => {
       <div style={cardStyle}>
         <div style={cardBodyStyle}>
           <h5 style={cardTitleStyle}>Add New Tour</h5>
+          {showSuccessMessage && (
+            <div style={successMessageStyle}>
+              Tour added successfully!
+            </div>
+          )}
           <form onSubmit={handleAddTour} style={formStyle}>
             <div style={formRowStyle}>
               <div style={formFieldStyle}>
@@ -116,12 +122,12 @@ const AdminPage = () => {
                 />
               </div>
               <div style={formFieldStyle}>
-                <label htmlFor="distanceName" style={labelStyle}>Distance:</label>
+                <label htmlFor="daysName" style={labelStyle}>Days:</label>
                 <input
                   type="number"
-                  id="distanceName"
-                  value={distanceName}
-                  onChange={(e) => setDistanceName(e.target.value)}
+                  id="daysName"
+                  value={daysName}
+                  onChange={(e) => setdaysName(e.target.value)}
                   required
                   style={inputStyle}
                 />
@@ -180,11 +186,7 @@ const AdminPage = () => {
               </button>
             </div>
           </form>
-          {showSuccessMessage && (
-            <div style={successMessageStyle}>
-              Tour added successfully!
-            </div>
-          )}
+          
         </div>
       </div>
     </div>

@@ -48,7 +48,7 @@ const Footer = () => {
           <Col lg='3'>
             <div className='fut__logo'>
               <img src = {logo} alt=''/>
-              <p>lorem ipsum</p>
+              <p>Your Travel Companion</p>
             </div>
 
             <div className='social__links d-flex align-items-center gap-4'>
@@ -140,7 +140,7 @@ const Footer = () => {
           </Col>
         <Col lg='12' className='text-center pt-5'>
           <p className='copyright'>
-            Copyright @ {year}, design and develop by <b>TAKEZO</b> the Almighty. All rights reserved</p>
+            Copyright @ {year}, design and develop by <b>Group 7</b> with ❤️. All rights reserved</p>
         </Col>
         </Row>
       </Container>

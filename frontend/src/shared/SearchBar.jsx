@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const locationRef = useRef("");
-  const distanceRef = useRef(0);
+  const daysRef = useRef(0);
   const maxGroupSizeRef = useRef(0);
 
   const navigation = useNavigate();
@@ -14,15 +14,15 @@ const SearchBar = () => {
   const searchHandler = async () => {
 
     const location =  locationRef.current.value;
-    const distance =  distanceRef.current.value;
+    const days =  daysRef.current.value;
     const maxGroupSize = maxGroupSizeRef.current.value;
 
-    if (location === "" || distance === "" || maxGroupSize === "") {
+    if (location === "" || days === "" || maxGroupSize === "") {
       return alert("All fields are mandatory..!");
     }
 
     const res = await fetch(
-      `${BASE_URL}/tours/search/getSearch?title=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`);
+      `${BASE_URL}/tours/search/getSearch?title=${location}&days=${days}&maxGroupSize=${maxGroupSize}`);
 
     if (!res.ok) {
       alert("Something went wrong");
@@ -30,7 +30,7 @@ const SearchBar = () => {
 
     const result = await res.json();
     navigation(
-      `/tours/search?title=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`,
+      `/tours/search?title=${location}&days=${days}&maxGroupSize=${maxGroupSize}`,
       { state: result.data }
     );
   };
@@ -57,11 +57,11 @@ const SearchBar = () => {
               <i class="ri-map-pin-time-line"></i>
             </span>
             <div>
-              <h6>Distance</h6>
+              <h6>Days</h6>
               <input
                 type="number"
-                placeholder="Distance K/m"
-                ref={distanceRef}
+                placeholder="No of days"
+                ref={daysRef}
               />
             </div>
           </FormGroup>
@@ -71,7 +71,7 @@ const SearchBar = () => {
             </span>
             <div>
               <h6>Max people</h6>
-              <input type="number" placeholder="0" ref={maxGroupSizeRef} />
+              <input type="number" placeholder="No of people" ref={maxGroupSizeRef} />
             </div>
           </FormGroup>
           <span className="search__icon" type="submit" onClick={searchHandler}>

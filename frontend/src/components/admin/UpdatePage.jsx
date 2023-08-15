@@ -8,7 +8,7 @@ const UpdatePage = ({ tourId }) => {
   const [tourName, setTourName] = useState('');
   const [cityName, setCityName] = useState('');
   const [addressName, setAddressName] = useState('');
-  const [distanceName, setDistanceName] = useState('');
+  const [daysName, setdaysName] = useState('');
   const [price, setPrice] = useState('');
   const [maxGroupSize, setMaxGroupSize] = useState('');
   const [tourDesc, setTourDesc] = useState('');
@@ -27,7 +27,7 @@ const UpdatePage = ({ tourId }) => {
       setTourName(data.title);
       setCityName(data.city);
       setAddressName(data.address);
-      setDistanceName(data.distance);
+      setdaysName(data.days);
       setPrice(data.price);
       setMaxGroupSize(data.maxGroupSize);
       setTourDesc(data.desc);
@@ -52,7 +52,7 @@ const UpdatePage = ({ tourId }) => {
           title: tourName,
           city: cityName,
           address: addressName,
-          distance: distanceName,
+          days: daysName,
           photo: "/tour-images/tour-img02.jpg",
           desc: tourDesc,
           price: price,
@@ -63,6 +63,7 @@ const UpdatePage = ({ tourId }) => {
   
       if (response.ok) {
         setShowSuccessMessage(true);
+        window.location.reload();
       } else {
         throw new Error("Failed to update tour");
       }
@@ -114,12 +115,12 @@ const UpdatePage = ({ tourId }) => {
                     />
                   </div>
                   <div style={formFieldStyle}>
-                    <label htmlFor="distanceName" style={labelStyle}>Distance:</label>
+                    <label htmlFor="daysName" style={labelStyle}>Days:</label>
                     <input
                       type="number"
-                      id="distanceName"
-                      value={distanceName}
-                      onChange={(e) => setDistanceName(e.target.value)}
+                      id="daysName"
+                      value={daysName}
+                      onChange={(e) => setdaysName(e.target.value)}
                       style={inputStyle}
                     />
                   </div>

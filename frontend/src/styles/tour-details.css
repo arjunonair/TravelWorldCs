@@ -48,18 +48,15 @@
     font-style: 1rem;
     line-height: 30px;
 }
-
+.rating__group{
+    margin-left: 15px;
+}
 .rating__group span{
     font-style: 1.1rem;
     display: flex;
     align-items: center;
     color: var(--secondary-color);
     cursor: pointer;
-}
-
-.rating__group span:hover{
-    color: var(--primary-color);
-
 } 
 
 .tour__reviews h4{
@@ -122,8 +119,10 @@
     color: var(--secondary-color);
 }
 
-
 .review__item span{
     font-weight: 500;
 }
 
+.selected{
+    color: var(--primary-color);
+}

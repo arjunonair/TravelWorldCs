@@ -10,7 +10,7 @@ const BookedToursTable = ({ tourCount }) => {
   const [selectedTour, setSelectedTour] = useState({
     _id: "",
     title: "",
-    distance: "",
+    days: "",
     price: "",
     maxGroupSize: "",
   });
@@ -51,11 +51,13 @@ const BookedToursTable = ({ tourCount }) => {
         console.error("Failed to delete tour:", error);
       });
     setShowDeleteConfirmationModal(false);
+    window.location.reload();
   };
 
   const handleCancelDelete = () => {
     setTourToDelete(null);
     setShowDeleteConfirmationModal(false);
+    
   };
 
   const handleModalClose = () => {
@@ -74,7 +76,7 @@ const BookedToursTable = ({ tourCount }) => {
         <thead>
           <tr>
             <th style={headerCellStyle}>Tour Name</th>
-            <th style={headerCellStyle}>Distance</th>
+            <th style={headerCellStyle}>Days</th>
             <th style={headerCellStyle}>Price</th>
             <th style={headerCellStyle}>Max Group Size</th>
             <th style={headerCellStyle}>Actions</th>
@@ -84,7 +86,7 @@ const BookedToursTable = ({ tourCount }) => {
           {tours.map((tour, index) => (
             <tr key={index} style={index % 2 === 0 ? rowEvenStyle : rowOddStyle}>
               <td style={cellStyle}>{tour.title}</td>
-              <td style={cellStyle}>{tour.distance}</td>
+              <td style={cellStyle}>{tour.days}</td>
               <td style={cellStyle}>{tour.price}</td>
               <td style={cellStyle}>{tour.maxGroupSize}</td>
               <td style={cellStyle}>

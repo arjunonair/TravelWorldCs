@@ -9,7 +9,7 @@ const BookedPage = () => {
   const [selectedBooking, setSelectedBooking] = useState({
     _id: "",
     title: "",
-    distance: "",
+    days: "",
     price: "",
     maxGroupSize: "",
   });
@@ -36,6 +36,7 @@ const BookedPage = () => {
         if (response.ok) {
           console.log('Booking deleted successfully');
           refetchData();
+          window.location.reload();
         } else {
           console.error('Failed to delete Booking');
         }

@@ -20,6 +20,7 @@ const TourDetails = () => {
    },[])
   const { id } = useParams();
   const reviewMsgRef = useRef("");
+  const [selectedRating, setSelectedRating] = useState(null);
   const [tourRating, setTourRating] = useState(null);
   
   const { user } = useContext(authContext);
@@ -36,7 +37,7 @@ const TourDetails = () => {
     address,
     reviews,
     city,
-    distance,
+    days,
     maxGroupSize,
   } = tourData; //destructuring of objects
 
@@ -55,7 +56,7 @@ const TourDetails = () => {
       const reviewObj = {
         username : user?.username,
         reviewText,
-        rating : tourRating
+        rating : selectedRating
       }
 
       const res = await fetch(`${BASE_URL}/review/${id}`,{
@@ -70,6 +71,9 @@ const TourDetails = () => {
     const result = await res.json()
     if(!res.ok){ 
       alert(result.message )}
+      else{
+        window.location.reload()
+      }
     } catch (err) {
       alert(err.message)  
     }
@@ -85,7 +89,7 @@ const TourDetails = () => {
                 <img src={photo} alt="" />
 
                 <div className="tour__info">
-                  <h2>{title}</h2>
+                  <h1 className="mb-2">{title}</h1>
 
                   <div className="d-flex align-items-center gap-5">
                     <span className="tour__rating d-flex align-items-center gap-1">
@@ -117,8 +121,8 @@ const TourDetails = () => {
                       Rs.{price}/ Per Person
                     </span>
                     <span>
-                      <i class="ri-map-pin-line"></i>
-                      {distance} km
+                    <i class="ri-calendar-todo-fill"></i>
+                      {days} days
                     </span>
                     <span>
                       <i class="ri-group-fill"></i>
@@ -132,21 +136,41 @@ const TourDetails = () => {
                   <h4>Reviews({reviews?.length} reviews)</h4>
 
                   <Form onSubmit={submitHandler}>
-                    <div className="d-flex align-items-center gap-3 mb-4 rating__group">
-                      <span onClick={() => setTourRating(1)}>
-                        1<i class="ri-star-s-fill"></i>
+                  <div className="d-flex align-items-center gap-3 ml-5 mb-4 pl-3 rating__group">
+                      <span onClick={() => setSelectedRating(1)}>
+                        {selectedRating >= 1 ? (
+                          <i class="ri-star-fill"></i>
+                        ) : (
+                          <i class="ri-star-line"></i>
+                        )}
                       </span>
-                      <span onClick={() => setTourRating(2)}>
-                        2<i class="ri-star-s-fill"></i>
+                      <span onClick={() => setSelectedRating(2)}>
+                        {selectedRating >= 2 ? (
+                          <i class="ri-star-fill"></i>
+                        ) : (
+                          <i class="ri-star-line"></i>
+                        )}
                       </span>
-                      <span onClick={() => setTourRating(3)}>
-                        3<i class="ri-star-s-fill"></i>
+                      <span onClick={() => setSelectedRating(3)}>
+                        {selectedRating >= 3 ? (
+                          <i class="ri-star-fill"></i>
+                        ) : (
+                          <i class="ri-star-line"></i>
+                        )}
                       </span>
-                      <span onClick={() => setTourRating(4)}>
-                        4<i class="ri-star-s-fill"></i>
+                      <span onClick={() => setSelectedRating(4)}>
+                        {selectedRating >= 4 ? (
+                          <i class="ri-star-fill"></i>
+                        ) : (
+                          <i class="ri-star-line"></i>
+                        )}
                       </span>
-                      <span onClick={() => setTourRating(5)}>
-                        5<i class="ri-star-s-fill"></i>
+                      <span onClick={() => setSelectedRating(5)}>
+                        {selectedRating >= 5 ? (
+                          <i class="ri-star-fill"></i>
+                        ) : (
+                          <i class="ri-star-line"></i>
+                        )}
                       </span>
                     </div>
 

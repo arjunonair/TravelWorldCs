@@ -3,6 +3,7 @@ import { BASE_URL } from '../utils/config';
 import CommonSection from '../shared/commonSection.jsx';
 import { authContext } from '../context/authContext';
 import '../styles/customize.css';
+import customImg from '../assets/images/gallery-05.jpg'
 
 const AddCustomForm = () => {
 
@@ -85,14 +86,20 @@ const AddCustomForm = () => {
     setIsApproved(false);
   };
 
+
   return (
     <>
-      <CommonSection title={'Customize Your Tour'} />
+    <div className="custom__page">
+      <div className="custom__img">
+        <img src={customImg} alt='' />
+      </div>
       <div className="form-container">
-        <h1>Add Custom Tour</h1>
-        <div className='line'></div>
+        <div className="form-header">
+          <h1>Add Custom Tour</h1>
+          <div className="line"></div>
+        </div>
         {successMessage && (
-          <p className="success-message">{successMessage}</p>
+          <p className="message success-message">{successMessage}</p>
         )}
         <form onSubmit={handleSubmit}>
           <div className="form-row">
@@ -130,6 +137,7 @@ const AddCustomForm = () => {
             <button type="reset" className="reset-button" onClick={handleReset}>Reset</button>
           </div>
         </form>
+      </div>
       </div>
     </>
   );

@@ -15,7 +15,7 @@ const tourSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    distance: {
+    days: {
       type: Number,
       required: true,
     },
