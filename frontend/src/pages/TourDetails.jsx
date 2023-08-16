@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect,useContext } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "../styles/tour-details.css";
 
 import { Container, Row, Col, Form, ListGroup } from "reactstrap";
@@ -11,23 +11,22 @@ import Newsletter from "../shared/NewsLetter";
 import Footer from '../components/footer/footer'
 
 import useFetch from '../hooks/useFetch'
-import {BASE_URL} from '../utils/config'
+import { BASE_URL } from '../utils/config'
 import { authContext } from "../context/authContext";
+import ReactWhatsapp from 'react-whatsapp'
 
 const TourDetails = () => {
-  useEffect(()=>{
-    window.scrollTo(0,0)
-   },[])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   const { id } = useParams();
   const reviewMsgRef = useRef("");
   const [selectedRating, setSelectedRating] = useState(null);
   const [tourRating, setTourRating] = useState(null);
-  
+
   const { user } = useContext(authContext);
 
-  // const tour = tours.find((tour) => tour.id === id); //later backend set aka
-
-  const {data:tourData} = useFetch(`${BASE_URL}/tours/${id}`)
+  const { data: tourData } = useFetch(`${BASE_URL}/tours/${id}`)
 
   const {
     photo,
@@ -39,7 +38,7 @@ const TourDetails = () => {
     city,
     days,
     maxGroupSize,
-  } = tourData; //destructuring of objects
+  } = tourData;
 
   const { totalRating, avgRating } = calculateAvgRating(reviews);
 
@@ -50,32 +49,33 @@ const TourDetails = () => {
     const reviewText = reviewMsgRef.current.value;
 
     try {
-      if(!user || user ===undefined || user===null){
+      if (!user || user === undefined || user === null) {
         alert('please sign in')
       }
       const reviewObj = {
-        username : user?.username,
+        username: user?.username,
         reviewText,
-        rating : selectedRating
+        rating: selectedRating
       }
 
-      const res = await fetch(`${BASE_URL}/review/${id}`,{
+      const res = await fetch(`${BASE_URL}/review/${id}`, {
         method: 'post',
-        headers : {
-          'content-type' : 'application/json'
+        headers: {
+          'content-type': 'application/json'
         },
-        credentials:'include',
-        body : JSON.stringify(reviewObj)
+        credentials: 'include',
+        body: JSON.stringify(reviewObj)
       })
 
-    const result = await res.json()
-    if(!res.ok){ 
-      alert(result.message )}
-      else{
+      const result = await res.json()
+      if (!res.ok) {
+        alert(result.message)
+      }
+      else {
         window.location.reload()
       }
     } catch (err) {
-      alert(err.message)  
+      alert(err.message)
     }
   };
 
@@ -83,7 +83,7 @@ const TourDetails = () => {
     <>
       <section>
         <Container>
-          { <Row>
+          <Row>
             <Col lg="8">
               <div className="tour__content">
                 <img src={photo} alt="" />
@@ -121,7 +121,7 @@ const TourDetails = () => {
                       Rs.{price}/ Per Person
                     </span>
                     <span>
-                    <i class="ri-calendar-todo-fill"></i>
+                      <i class="ri-calendar-todo-fill"></i>
                       {days} days
                     </span>
                     <span>
@@ -132,11 +132,20 @@ const TourDetails = () => {
                   <h5>Description</h5>
                   <p>{desc}</p>
                 </div>
+                <ReactWhatsapp number="+91 6238783921" className="btn__style" message={title} >Whatasapp Enquiry</ReactWhatsapp>
+                <a
+                href={photo}
+                download={photo}
+                className="btn__styles"
+                  style={{ backgroundColor: "red" }}
+                >
+                  Download Details
+                </a>
                 <div className="tour__reviews mt-4">
                   <h4>Reviews({reviews?.length} reviews)</h4>
 
                   <Form onSubmit={submitHandler}>
-                  <div className="d-flex align-items-center gap-3 ml-5 mb-4 pl-3 rating__group">
+                    <div className="d-flex align-items-center gap-3 ml-5 mb-4 pl-3 rating__group">
                       <span onClick={() => setSelectedRating(1)}>
                         {selectedRating >= 1 ? (
                           <i class="ri-star-fill"></i>
@@ -224,7 +233,6 @@ const TourDetails = () => {
               <Booking tour={tourData} avgRating={avgRating} />
             </Col>
           </Row>
-          }
         </Container>
       </section>
       <Newsletter />

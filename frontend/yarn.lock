@@ -10653,6 +10653,11 @@ react-use-measure@^2.1.1:
   dependencies:
     debounce "^1.2.1"
 
+react-whatsapp@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/react-whatsapp/-/react-whatsapp-0.3.0.tgz"
+  integrity sha512-ZuCKhd30crVVNdLf/3BfDffqEOZLFW6mYRITA4fB6Vk5p3TU1Gl3YfTEfLE/7W+kTuwYPzF6aDnzbNt6GcatiQ==
+
 react-zdog@>=1.0:
   version "1.0.11"
   resolved "https://registry.npmjs.org/react-zdog/-/react-zdog-1.0.11.tgz"

@@ -4,7 +4,7 @@ import './booking.css'
 import {Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import {useNavigate} from 'react-router-dom'
 import {authContext} from '../../context/authContext'
-import { htmlCode } from '../admin/template.js';
+import { htmlCode } from './template';
 
 import {BASE_URL} from '../../utils/config'
 //Fetch not changed markkaa l
@@ -109,6 +109,22 @@ const Booking = ({tour, avgRating}) => {
           const result = await response.json();
           return alert(result.message);
         }
+        // const emailRes = fetch(`${BASE_URL}/email`, {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify({
+        //     email: user.email,
+        //     subject: 'Tour Booking Confirmation',
+        //     html: htmlCode
+        //   }),
+        // });
+        // if (emailRes.ok) {
+        //   console.log('Email sent successfully!');
+        // } else {
+        //   throw new Error('Failed to send email');
+        // }
         // Redirect to thank-you page on successful booking
         navigate('/thank-you');
       }
