@@ -4,7 +4,7 @@ import './booking.css'
 import {Form, FormGroup, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import {useNavigate} from 'react-router-dom'
 import {authContext} from '../../context/authContext'
-import { htmlCode } from './template';
+// import { htmlCode } from './template';
 
 import {BASE_URL} from '../../utils/config'
 //Fetch not changed markkaa l

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BASE_URL } from "../../utils/config";
 import useFetch from "../../hooks/useFetch";
 import UpdatePage from "./UpdatePage";
 
 const BookedPage = () => {
-  const [page, setPage] = useState(0);
+  // const [page, setPage] = useState(0);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState({
     _id: "",
@@ -16,7 +16,7 @@ const BookedPage = () => {
   });
   const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
   const [bookingToDelete, setBookingToDelete] = useState(null);
-  const { data: booking, refetchData } = useFetch(`${BASE_URL}/booking`);
+  const { data: booking } = useFetch(`${BASE_URL}/booking`);
   console.log(booking);
 
   const handleUpdateClick = (Booking) => {
@@ -110,7 +110,7 @@ const BookedPage = () => {
       </div> */}
 
       {showUpdateModal && (
-        <div style={modalContainerStyle} onClick={handleModalClick}>
+        <div style={modalContainerStyle} onClick={handleUpdateClick}>
           <div style={modalContentStyle}>
             <UpdatePage BookingId={selectedBooking._id} />
           </div>
@@ -169,34 +169,34 @@ const rowOddStyle = {
   backgroundColor: "#ffffff",
 };
 
-const paginationStyle = {
-  marginTop: "20px",
-  display: "flex",
-  justifyContent: "center",
-};
+// const paginationStyle = {
+//   marginTop: "20px",
+//   display: "flex",
+//   justifyContent: "center",
+// };
 
-const pageNumberStyle = (isActive) => ({
-  display: "inline-block",
-  margin: "0 5px",
-  padding: "8px 12px",
-  border: "1px solid #ccc",
-  backgroundColor: isActive ? "#283945" : "#f1f1f1",
-  color: isActive ? "#fff" : "#000",
-  cursor: "pointer",
-  borderRadius: "4px",
-  transition: "background-color 0.3s",
-  fontWeight: isActive ? "bold" : "normal",
-});
+// const pageNumberStyle = (isActive) => ({
+//   display: "inline-block",
+//   margin: "0 5px",
+//   padding: "8px 12px",
+//   border: "1px solid #ccc",
+//   backgroundColor: isActive ? "#283945" : "#f1f1f1",
+//   color: isActive ? "#fff" : "#000",
+//   cursor: "pointer",
+//   borderRadius: "4px",
+//   transition: "background-color 0.3s",
+//   fontWeight: isActive ? "bold" : "normal",
+// });
 
-const updateButtonStyle = {
-  backgroundColor: "green",
-  color: "#fff",
-  border: "none",
-  padding: "8px 12px",
-  margin: "0 5px",
-  borderRadius: "4px",
-  cursor: "pointer",
-};
+// const updateButtonStyle = {
+//   backgroundColor: "green",
+//   color: "#fff",
+//   border: "none",
+//   padding: "8px 12px",
+//   margin: "0 5px",
+//   borderRadius: "4px",
+//   cursor: "pointer",
+// };
 
 const deleteButtonStyle = {
   backgroundColor: "red",

@@ -1,13 +1,13 @@
-import React, { useState, useContext,useRef } from 'react';
+import React, { useState, useContext } from 'react';
 import { BASE_URL } from '../utils/config';
-import CommonSection from '../shared/commonSection.jsx';
+// import CommonSection from '../shared/commonSection.jsx';
 import { authContext } from '../context/authContext';
 import '../styles/customize.css';
 import customImg from '../assets/images/gallery-05.jpg'
 
 const AddCustomForm = () => {
 
-  const formRef = useRef(null);
+  // const formRef = useRef(null);
   const { user } = useContext(authContext);
   const [title, setTitle] = useState('');
   const [city, setCity] = useState('');

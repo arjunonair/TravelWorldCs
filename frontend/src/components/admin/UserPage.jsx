@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BASE_URL } from "../../utils/config";
 import useFetch from "../../hooks/useFetch";
 

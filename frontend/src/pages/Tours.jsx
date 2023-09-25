@@ -4,12 +4,12 @@ import '../styles/tours.css'
 import Newsletter from '../shared/NewsLetter.jsx'
 import TourCard from '../shared/TourCard.jsx'
 import SearchBar from '../shared/SearchBar.jsx'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import useFetch from '../hooks/useFetch.js'
 import { BASE_URL } from '../utils/config.js'
 import Footer from '../components/footer/footer'
 
-import {Container, Row,Col, Button } from 'reactstrap'
+import {Container, Row, Col } from 'reactstrap'
 
 const Tours = () => {
 

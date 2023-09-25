@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import "../styles/profile.css";
 import { authContext } from "../context/authContext";
-import userImg from "../assets/images/user.png";
+// import userImg from "../assets/images/user.png";
 import useFetch from "../hooks/useFetch.js";
 import { BASE_URL } from "../utils/config";
 import PopupWindow from "../shared/popupWindow";
@@ -18,7 +18,7 @@ const ProfilePage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [newUsername, setNewUsername] = useState("");
   const [newPhone, setNewPhone] = useState("");
-  const [file, setFile] = useState("");
+  // const [file, setFile] = useState("");
   // const [newPassword, setNewPassword] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [image, setImage] = useState("")
